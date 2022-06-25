@@ -1,0 +1,18 @@
+
+  .footer_list {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+  }
+  
+  
+  .footer_link {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    
+  }
+  
+
+  
