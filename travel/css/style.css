@@ -1,13 +1,43 @@
 h1 {
     font-family: Magra;
 }
+
+h3 {
+    font-family: 'Aleo';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 42px;
+    color: #0D606F;
+}
+
+h2 {
+    font-family: 'Red Hat Text';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 53px;
+    color: #F2785C;
+}
+
 .preview {
     background: url(../assets/img/bg_head_main.jpg) no-repeat center;
     height: 765px;
 }
+
 .stories {
     background: url(../assets/img/bg_foot_main.jpg) no-repeat center;
 }
+
+.stories_text {
+    font-family: 'Aleo';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #0D606F;
+}
+
 .footer_list {
     display: flex;
     flex-direction: row;
