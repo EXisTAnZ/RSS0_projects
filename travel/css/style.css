@@ -1,18 +1,23 @@
-
-  .footer_list {
+h1 {
+    font-family: Magra;
+}
+.preview {
+    background: url(../assets/img/bg_head_main.jpg) no-repeat center;
+    height: 765px;
+}
+.stories {
+    background: url(../assets/img/bg_foot_main.jpg) no-repeat center;
+}
+.footer_list {
     display: flex;
     flex-direction: row;
     justify-content: end;
     align-items: center;
-  }
-  
-  
-  .footer_link {
+}
+
+
+.footer_link {
     display: flex;
     flex-wrap: wrap;
     list-style-type: none;
-    
-  }
-  
-
-  
+}
