@@ -1,6 +1,13 @@
 h1 {
     font-family: Magra;
 }
+.preview {
+    background: url(../assets/img/bg_head_main.jpg) no-repeat center;
+    height: 765px;
+}
+.stories {
+    background: url(../assets/img/bg_foot_main.jpg) no-repeat center;
+}
 .footer_list {
     display: flex;
     flex-direction: row;
