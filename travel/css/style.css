@@ -1,3 +1,6 @@
+h1 {
+    font-family: Magra;
+}
 .footer_list {
     display: flex;
     flex-direction: row;
