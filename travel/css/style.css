@@ -1,3 +1,7 @@
+body {
+    max-width: 1440px;
+    margin: 0 auto;
+}
 h1 {
     font-family: Magra;
 }
@@ -49,11 +53,17 @@ button {
     border-radius: 16px;
 }
 
+.slider {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
 /*!!! stories block !!!*/
 
 .stories_bground {
     background: url(../assets/img/bg_foot_main.jpg) no-repeat center;
-    padding-bottom: 61px;
+    padding-bottom: 60px;
 }
 
 .stories_shadow {
@@ -109,7 +119,7 @@ button {
 footer {
     display: flex;
     justify-content: center;
-    margin-top: -61px;
+    margin-top: -60px;
 }
 
 .footer_list {
