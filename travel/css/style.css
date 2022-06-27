@@ -46,6 +46,28 @@ button {
     background: url(../assets/img/bg_head_main.jpg) no-repeat center;
     height: 765px;
 }
+/*!!! steps block !!!*/
+.steps_box {
+    display: flex;
+    justify-content: space-around;
+}
+.steps_item {
+    text-align: center;
+}
+.steps_caption {
+    font-family: 'Aleo';
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #0D606F;
+}
+.steps_svg {
+    padding: 24px;
+    background-color: #F2785C;
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+}
 
 /*!!! destination block !!!*/
 
