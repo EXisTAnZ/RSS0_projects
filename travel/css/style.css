@@ -37,12 +37,16 @@ h2 {
 
 .stories_content {
     display: flex;
-    margin-bottom: 30px;
+    margin-top: 30px;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
 }
 
 .stories_content_2 {
     display: flex;
     flex-direction: column;
+    
 }
 
 .stories_image {
@@ -56,6 +60,7 @@ h2 {
     font-size: 20px;
     line-height: 24px;
     color: #0D606F;
+    max-width: 760px;
 }
 
 .stories_text a {
