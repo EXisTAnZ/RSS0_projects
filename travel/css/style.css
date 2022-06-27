@@ -24,11 +24,17 @@ h2 {
     background: url(../assets/img/bg_head_main.jpg) no-repeat center;
     height: 765px;
 }
+/* stories block */
 
 .stories {
     background: url(../assets/img/bg_foot_main.jpg) no-repeat center;
 }
-
+.stories_shadow {
+    background: rgba(255, 255, 255, 0.6);
+}
+.stories_image {
+    border-radius: 16px;
+}
 .stories_text {
     font-family: 'Aleo';
     font-style: normal;
@@ -37,7 +43,10 @@ h2 {
     line-height: 24px;
     color: #0D606F;
 }
-
+.stories_content a{
+    font-weight: 700;
+    color: #0D606F;
+}
 .footer_list {
     display: flex;
     flex-direction: row;
