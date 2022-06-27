@@ -28,7 +28,15 @@ h2 {
 .stories {
     background: url(../assets/img/bg_foot_main.jpg) no-repeat center;
 }
-
+.stories_content a{
+    font-family: 'Aleo';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    color: #0D606F;
+    cursor: pointer;
+}
 .stories_text {
     font-family: 'Aleo';
     font-style: normal;
