@@ -29,6 +29,9 @@ h2 {
 .stories {
     background: url(../assets/img/bg_foot_main.jpg) no-repeat center;
 }
+.stories_shadow {
+    background: rgba(255, 255, 255, 0.6);
+}
 .stories_image {
     border-radius: 16px;
 }
