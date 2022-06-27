@@ -2,6 +2,15 @@ h1 {
     font-family: Magra;
 }
 
+h2 {
+    font-family: 'Red Hat Text';
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 53px;
+    color: #F2785C;
+    text-align: center;
+}
+
 h3 {
     margin-top: 0px;
     margin-bottom: 24px;
@@ -12,12 +21,21 @@ h3 {
     color: #0D606F;
 }
 
-h2 {
-    font-family: 'Red Hat Text';
+button {
+    display: block;
+    padding: 10px 32px;
+    width: 228px;
+    height: 59px;
+    cursor: pointer;
+    font-family: 'Red Hat Text', sans-serif;
+    font-style: normal;
     font-weight: 500;
-    font-size: 40px;
-    line-height: 53px;
-    color: #F2785C;
+    font-size: 24px;
+    line-height: 32px;
+    color: #FFFFFF;
+    background: #0D606F;
+    border-radius: 10px;
+    border: 0px;
 }
 
 .preview {
@@ -46,7 +64,7 @@ h2 {
 .stories_content_2 {
     display: flex;
     flex-direction: column;
-    
+
 }
 
 .stories_image {
@@ -70,20 +88,10 @@ h2 {
 }
 
 .stories_button {
-    display: block;
     text-align: center;
-    width: 228px;
-    height: 59px;
-    cursor: pointer;
-    font-family: 'Red Hat Text', sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 32px;
-    color: #FFFFFF;
-    background: #0D606F;
-    border-radius: 10px;
- }
+    margin:auto;
+    margin-top: 30px;
+}
 
 .footer_list {
     display: flex;
