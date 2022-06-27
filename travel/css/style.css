@@ -1,3 +1,7 @@
+body {
+    max-width: 1440px;
+    margin: 0 auto;
+}
 h1 {
     font-family: Magra;
 }
@@ -47,6 +51,12 @@ button {
 
 .slider_img {
     border-radius: 16px;
+}
+
+.slider {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
 }
 
 /*!!! stories block !!!*/
