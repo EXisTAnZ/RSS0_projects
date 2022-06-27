@@ -89,20 +89,38 @@ button {
 
 .stories_button {
     text-align: center;
-    margin:auto;
+    margin: auto;
     margin-top: 30px;
 }
 
+.btn_arrow_svg {
+    margin-right: 10px;
+}
+
+/*footer block*/
+
 .footer_list {
     display: flex;
-    flex-direction: row;
-    justify-content: end;
+    justify-content: space-between;
     align-items: center;
 }
 
+.footer_mtspace {
+    width: 300px;
+}
+
+.footer_copyright {
+    font-family: 'Red Hat Text';
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21px;
+    color: #FFFF00;
+    width: 300px;
+}
 
 .footer_link {
     display: flex;
     flex-wrap: wrap;
     list-style-type: none;
+    width: 260px;
 }
