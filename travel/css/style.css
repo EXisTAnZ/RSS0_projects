@@ -32,6 +32,9 @@ h2 {
 .stories_shadow {
     background: rgba(255, 255, 255, 0.6);
 }
+.stories_content {
+    display: flex;
+}
 .stories_image {
     border-radius: 16px;
 }
@@ -43,7 +46,7 @@ h2 {
     line-height: 24px;
     color: #0D606F;
 }
-.stories_content a{
+.stories_text a{
     font-weight: 700;
     color: #0D606F;
 }
