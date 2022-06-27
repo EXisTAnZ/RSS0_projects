@@ -53,7 +53,7 @@ button {
 
 .stories_bground {
     background: url(../assets/img/bg_foot_main.jpg) no-repeat center;
-    padding-bottom: 61px;
+    padding-bottom: 60px;
 }
 
 .stories_shadow {
@@ -109,7 +109,7 @@ button {
 footer {
     display: flex;
     justify-content: center;
-    margin-top: -61px;
+    margin-top: -60px;
 }
 
 .footer_list {
