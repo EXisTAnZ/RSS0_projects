@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel</title>
+    <title>Travel ver 1.00</title>
     <link rel="icon" href="assets/svg/icon.svg">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
@@ -19,14 +19,33 @@
 
 <body>
     <header>
-        <nav>
-            <p>TODO for navigation</p>
-            <H2>Travel version 0.47</H2>
+        <a href="#" class="header_logo">
+            <img src="assets/svg/icon.svg" alt="logo">
+            <p class="header_title">Travel Portal</p>
+        </a>
+        <nav class="header_nav">
+            <ul class="header_link">
+                <li class="header_item">
+                    <a href="#preview">How It Works</a>
+                </li>
+                <li class="header_item">
+                    <a href="#steps">Plan Your Trip</a>
+                </li>
+                <li class="header_item">
+                    <a href="#destinations">Destinations</a>
+                </li>
+                <li class="header_item">
+                    <a href="#stories">Travel Stories</a>
+                </li>
+            </ul>
         </nav>
+        <form action="#" class="header_form">
+            <button type="button" class="header_button">Login</button>
+        </form>
     </header>
     <main>
         <section class="preview">
-            <h1 class="preview_title">Explore the beauty of the World</h1>
+            <h1 id="preview" class="preview_title">Explore the beauty of the World</h1>
             <p class="preview_desc">Receive personalized recommendations for countries, hotels, activities
                 and more</p>
             <form action="#" class="preview_form">
@@ -37,7 +56,7 @@
             </form>
         </section>
         <section class="steps">
-            <h2 class="steps_title">3 STEPS TO THE PERFECT TRIP</h2>
+            <h2 id="steps" class="steps_title">3 STEPS TO THE PERFECT TRIP</h2>
             <div class="steps_box">
                 <div class="steps_item">
                     <img class="steps_svg" src="assets/svg/bycicle.svg" alt="bycicle">
@@ -54,7 +73,7 @@
             </div>
         </section>
         <section class="destinations">
-            <h2 class="steps_title">POPULAR DESTINATIONS</h2>
+            <h2 id="destinations" class="steps_title">POPULAR DESTINATIONS</h2>
             <div class="slider">
                 <img class="slider_img" src="assets/img/slider1.jpg" alt="Spain">
                 <p class="slide_title">SPAIN</p>
@@ -78,7 +97,7 @@
             </div>
         </section>
         <section class="stories">
-            <h2 class="stories_title">TRAVEL STORIES</h2>
+            <h2 id="stories" class="stories_title">TRAVEL STORIES</h2>
             <div class="stories_bground">
                 <div class="stories_shadow">
                     <div class="stories_content">
