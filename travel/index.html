@@ -77,18 +77,21 @@
         <section class="destinations">
             <h2 id="destinations" class="steps_title">POPULAR DESTINATIONS</h2>
             <div class="slider">
-                <img class="slider_img" src="assets/img/slider1.jpg" alt="Spain">
-                <p class="slide_title">SPAIN</p>
-                <img class="slider_img" src="assets/img/slider2.jpg" alt="Japan">
-                <p class="slider_title">JAPAN</p>
-                <img class="slider_img" src="assets/img/slider3.jpg" alt="USA">
-                <p class="slider_title">USA</p>
+                <div class="slide slide1">
+                    <p class="slider_title">SPAIN</p>
+                </div>
+                <div class="slide slide2">
+                   <p class="slider_title">JAPAN</p>
+                </div>
+                <div class="slide slide3">
+                  <p class="slider_title">USA</p>
+                </div>
             </div>
             <div class="destinations_nav">
                 <form action="#" class="slider_nav">
-                    <input class="slider_item" type="radio">
-                    <input class="slider_item" type="radio">
-                    <input class="slider_item" type="radio">
+                    <input class="slider_item" name="slider_selector" type="radio">
+                    <input class="slider_item" name="slider_selector" checked type="radio">
+                    <input class="slider_item" name="slider_selector" type="radio">
                 </form>
                 <form action="#" class="destinations_form">
                     <button type="button" class="destinations_button">
