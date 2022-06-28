@@ -2,8 +2,13 @@ body {
     max-width: 1440px;
     margin: 0 auto;
 }
+
 h1 {
-    font-family: Magra;
+    font-family: 'Aleo';
+    font-weight: 700;
+    font-size: 80px;
+    line-height: 96px;
+    color: #FFFFFF;
 }
 
 h2 {
@@ -42,18 +47,54 @@ button {
     border: 0px;
 }
 
+/*!!! preview block !!!*/
 .preview {
     background: url(../assets/img/bg_head_main.jpg) no-repeat center;
     height: 765px;
 }
+
+.preview_desc {
+    font-family: 'Aleo';
+    font-style: italic;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    color: #FFFFFF;
+}
+.preview_form_input {
+    display: flex;
+    align-items: center;
+}
+.preview_input_button {
+    margin-left: -248px;
+}
+.preview_input_text {
+    width: 892px;
+    height: 95px;
+    font-family: 'Aleo', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color: #F2785C;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 16px;
+    border: 0px;
+}
+.preview_input_text::placeholder {
+    color: #F2785C;
+}
+
 /*!!! steps block !!!*/
 .steps_box {
     display: flex;
     justify-content: space-around;
 }
+
 .steps_item {
     text-align: center;
 }
+
 .steps_caption {
     font-family: 'Aleo';
     font-weight: 400;
@@ -61,6 +102,7 @@ button {
     line-height: 24px;
     color: #0D606F;
 }
+
 .steps_svg {
     padding: 24px;
     background-color: #F2785C;
