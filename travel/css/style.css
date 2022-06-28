@@ -47,6 +47,16 @@ button {
     border: 0px;
 }
 
+/*!!! header block !!!*/
+header {
+    display: flex;
+    height: 90px;
+    background-color: #F2785C;
+}
+.header_link {
+    display: flex;
+    list-style-type: none;
+}
 /*!!! preview block !!!*/
 .preview {
     background: url(../assets/img/bg_head_main.jpg) no-repeat center;
