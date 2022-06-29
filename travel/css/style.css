@@ -89,12 +89,16 @@ header {
     font-size: 32px;
     line-height: 39px;
     color: #FFFFFF;
-    width: 250px;
     text-decoration: none;
+    margin-left: 5px;
+}
+
+.header_nav{
+    margin-left: -40px;
 }
 
 .header_form {
-    width: 250px;
+    
 }
 
 .header_button {
@@ -133,6 +137,7 @@ header {
 .preview_content {
     height: 83.33%;
     padding-left: 120px;
+    padding-top: 20px;
 }
 
 .preview_title {
@@ -147,6 +152,7 @@ header {
     line-height: 24px;
     color: #FFFFFF;
     margin-bottom: 46px;
+    margin-top: -20px;
 }
 
 .preview_form_input {
@@ -178,9 +184,15 @@ header {
 }
 
 /*!!! steps block !!!*/
+.steps {
+    margin-bottom: 80px;
+}
 .steps_box {
     display: flex;
     justify-content: space-around;
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-top: 6px;
 }
 
 .steps_item {
@@ -193,6 +205,7 @@ header {
     font-size: 20px;
     line-height: 24px;
     color: #0D606F;
+    margin-top: 26px;
 }
 
 .steps_svg {
@@ -213,6 +226,9 @@ header {
 }
 
 /*!!! destination block !!!*/
+.destinations {
+    margin-bottom: 88px;
+}
 .destinations_nav {
     display: flex;
     flex-direction: column;
@@ -228,6 +244,7 @@ header {
     justify-content: center;
     overflow: hidden;
     gap: 60px;
+    margin-top: 41px;
 }
 
 .slider_title {
@@ -293,12 +310,12 @@ header {
 }
 
 .stories_content:first-child {
-    padding-top: 40px;
+    padding-top: 48px;
 }
 
 .stories_content {
     display: flex;
-    padding-bottom: 30px;
+    padding-bottom: 22px;
     justify-content: center;
     align-items: flex-start;
     gap: 40px;
@@ -329,7 +346,9 @@ header {
     font-weight: 700;
     color: #0D606F;
 }
-
+.stories_form {
+    padding-bottom: 50px;
+}
 .stories_button {
     text-align: center;
     margin: auto;
@@ -364,6 +383,7 @@ footer {
     color: #FFFFFF;
     width: 300px;
     text-align: center;
+    margin: 0px 150px;
 }
 
 .footer_link {
