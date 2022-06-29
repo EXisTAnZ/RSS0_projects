@@ -190,15 +190,17 @@ header {
 .steps_box {
     display: flex;
     justify-content: space-around;
-    padding-left: 32px;
-    padding-right: 32px;
+    padding-left: 49px;
+    padding-right: 53px;
     padding-top: 6px;
 }
 
 .steps_item {
     text-align: center;
 }
-
+.steps_item_calc {
+    margin-left: 70px;
+}
 .steps_caption {
     font-family: 'Aleo';
     font-weight: 400;
@@ -347,7 +349,8 @@ header {
     color: #0D606F;
 }
 .stories_form {
-    padding-bottom: 50px;
+    padding-top: 8px;
+    padding-bottom: 42px;
 }
 .stories_button {
     text-align: center;
