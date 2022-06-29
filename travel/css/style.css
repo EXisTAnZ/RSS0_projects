@@ -93,13 +93,11 @@ header {
     margin-left: 5px;
 }
 
-.header_nav{
+.header_nav {
     margin-left: -40px;
 }
 
-.header_form {
-    
-}
+.header_form {}
 
 .header_button {
     width: 103px;
@@ -187,6 +185,7 @@ header {
 .steps {
     margin-bottom: 80px;
 }
+
 .steps_box {
     display: flex;
     justify-content: space-around;
@@ -198,9 +197,11 @@ header {
 .steps_item {
     text-align: center;
 }
+
 .steps_item_calc {
     margin-left: 70px;
 }
+
 .steps_caption {
     font-family: 'Aleo';
     font-weight: 400;
@@ -222,8 +223,8 @@ header {
 .steps_svg:hover,
 .steps_svg:focus,
 .steps_svg:active {
-  background: rgba(242, 120, 92, 0.5);
-  cursor: pointer;
+    background: rgba(242, 120, 92, 0.5);
+    cursor: pointer;
 
 }
 
@@ -231,6 +232,7 @@ header {
 .destinations {
     margin-bottom: 88px;
 }
+
 .destinations_nav {
     display: flex;
     flex-direction: column;
@@ -348,10 +350,12 @@ header {
     font-weight: 700;
     color: #0D606F;
 }
+
 .stories_form {
     padding-top: 8px;
     padding-bottom: 42px;
 }
+
 .stories_button {
     text-align: center;
     margin: auto;
