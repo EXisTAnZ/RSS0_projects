@@ -1,5 +1,36 @@
 @media (max-width: 390px) {
- main {
+body {
     border-radius: 30px;
  }
+ header {
+    visibility: hidden;
+
+}
+ .preview {
+    background: url(../assets/img/bg_head_main_m.jpg) no-repeat center;
+    margin-top: -135px;
+    padding-top: 90px;
+    height: 765px;
+    border-radius: 30px;
+}
+.preview_title {
+    visibility: hidden;
+}
+.preview_desc {
+    visibility: hidden;
+}
+.preview_input_text {
+    width: 360px;
+    height: 48px;
+    font-family: 'Aleo', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16.8px;
+    color: #F2785C;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 16px;
+    border: 0px;
+    padding-left: 41px;
+}
 }
