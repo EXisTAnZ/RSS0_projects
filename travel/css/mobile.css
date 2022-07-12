@@ -1,0 +1,63 @@
+@media (max-width: 390px) {
+    main {
+        border-radius: 30px;
+    }
+
+    header {
+        display: none;
+    }
+
+    h2 {
+        font-size: 14px;
+        line-height: 18.52px;
+    }
+
+    button {
+        width: 92px;
+        height: 30px;
+        font-size: 11px;
+        line-height: 14.55px;
+        padding: 0px;
+    }
+
+    /*!!! preview block !!!*/
+    .preview {
+        background: url(../assets/img/bg_head_main_m.jpg) no-repeat center;
+        margin-top: 0px;
+        padding-top: 0px;
+        height: 251px;
+        border-radius: 30px 30px 0px 0px;
+    }
+
+    .preview_content {
+        padding-left: 15px;
+        padding-top: 142px;
+    }
+
+    .preview_title {
+        display: none;
+    }
+
+    .preview_desc {
+        display: none;
+    }
+
+    .preview_input_text {
+        width: 317px;
+        height: 46px;
+        font-family: 'Aleo', serif;
+        font-style: italic;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16.8px;
+        color: #F2785C;
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: 16px;
+        border: 0px;
+        padding-left: 41px;
+    }
+
+    .preview_input_button {
+        margin-left: -101px;
+    }
+}
