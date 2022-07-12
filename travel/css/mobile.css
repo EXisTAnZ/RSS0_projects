@@ -1,4 +1,4 @@
-@media (max-width: 390px) {
+@media (max-width: 550px) {
     main {
         border-radius: 30px;
     }
@@ -31,7 +31,8 @@
 
     .preview_content {
         padding-left: 15px;
-        padding-top: 142px;
+        padding-top: 126px;
+        height: auto;
     }
 
     .preview_title {
@@ -43,7 +44,7 @@
     }
 
     .preview_input_text {
-        width: 317px;
+        width: 342px;
         height: 46px;
         font-family: 'Aleo', serif;
         font-style: italic;
@@ -54,10 +55,28 @@
         background: rgba(255, 255, 255, 0.7);
         border-radius: 16px;
         border: 0px;
-        padding-left: 41px;
+        padding-left: 16px;
     }
 
     .preview_input_button {
         margin-left: -101px;
     }
+
+    /*!!! STEPS BLOCK !!!*/
+    .steps {
+        margin-top: 20px;
+        margin-bottom: 0px;
+    }
+    .steps_svg {
+        padding: 17.5px;
+        width: 35px;
+        height: 35px;
+    }
+
+    .steps_caption {
+        font-size: 10px;
+        line-height: 12px;
+    }
+
+    /*!!! STORIES BLOCK !!!*/
 }
