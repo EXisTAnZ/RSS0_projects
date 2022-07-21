@@ -33,12 +33,12 @@ function move(event) {
   }
   if (direction == -1) {
     length += parseFloat(getComputedStyle(prev).width)
+    slider.prepend(next.cloneNode(true));
     slider.lastElementChild.remove();
-    slider.prepend(cur.cloneNode(true))
   } else {
     length -= parseFloat(getComputedStyle(prev).width)
+    slider.append(prev.cloneNode(true));
     slider.firstElementChild.remove();
-    slider.append(cur.cloneNode(true));
   }
   slider.style.transform = `translateX(${-length}px)`;
   addNameId(slides);
