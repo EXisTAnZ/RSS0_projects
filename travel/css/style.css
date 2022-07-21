@@ -244,7 +244,9 @@ header {
 .slider_img {
     border-radius: 16px;
 }
-
+.slider_container {
+    
+}
 .slider {
     display: flex;
     justify-content: center;

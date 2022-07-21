@@ -41,7 +41,7 @@ function move(event) {
     slider.append(prev.cloneNode(true));
     slider.firstElementChild.remove();
   }
-  
+  slider.style.overflow = 'none';
   slider.style.transform = `translateX(${-length}px)`;
   slidercontainer.style.transition = '1.5s';
   slidercontainer.style.transform = `translateX(${+length}px)`;
