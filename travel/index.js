@@ -1,7 +1,8 @@
-console.log('Travel #3 \n in progress')
+console.log('Travel #3 \n in progress...')
 
 //слайдер
-let slider = document.getElementById('slider'),
+let slidercontainer = document.getElementById('slidercontainer'),
+  slider = document.getElementById('slider'),
   pinsParent = document.getElementById('slider_item'),
   length = 0,
   slides = document.getElementsByClassName('slide');
@@ -40,7 +41,11 @@ function move(event) {
     slider.append(prev.cloneNode(true));
     slider.firstElementChild.remove();
   }
+  
   slider.style.transform = `translateX(${-length}px)`;
+  slidercontainer.style.transition = '1.5s';
+  slidercontainer.style.transform = `translateX(${+length}px)`;
+  
   addNameId(slides);
   getSlidesStatus();
 }
