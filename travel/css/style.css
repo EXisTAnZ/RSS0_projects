@@ -248,8 +248,9 @@ header {
     display: none;
     width: 90%;
     position: absolute;
-    top: 38%;
+    top: 613px;
     left: 5%;
+    
 }
 
 .slider_img {
@@ -302,6 +303,7 @@ header {
     height: 20px;
     margin: 20px 3px 35px;
     background: rgba(242, 120, 92, 0.5);
+    opacity: 0.5;
     border-radius: 50%;
     appearance: none;
     cursor: pointer;
