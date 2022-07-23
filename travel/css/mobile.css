@@ -102,6 +102,17 @@
         display: flex;
         justify-content: space-between;
     }
+
+    .slider_item {
+        width: 10px;
+        height: 10px;
+    }
+
+    .destinations_nav {
+        padding-top: 0px;
+        margin-top: -40px;
+    }
+
     .slide {
         width: 360px;
         min-width: 360px;
@@ -135,7 +146,7 @@
     .stories_content {
         gap: 10px;
         padding-bottom: 8px;
-        
+
     }
 
     .stories_image {

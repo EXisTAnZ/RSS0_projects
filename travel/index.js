@@ -6,7 +6,8 @@ function sleep(millis) {
     i++;
   }
 }
-//слайдер
+//---------------!!! SLIDER !!!---------------//
+
 let slidercontainer = document.getElementById('slidercontainer'),
   slider = document.getElementById('slider'),
   radioSlider = document.getElementsByClassName('slider_item'),
@@ -58,11 +59,11 @@ function move(event) {
     slider.append(prev.cloneNode(true));
     slider.firstElementChild.remove();
   }
-  //slider.style.overflow = 'none';
   slider.style.transform = `translateX(${-length}px)`;
   slidercontainer.style.transform = `translateX(${length}px)`;
 
   for (const radio of radioSlider) {
+    //change activation of radiobuttons
     radio.classList.remove('slider_active');
     document.querySelector('.radio' + event.target.className.substring(11, 12)).classList.add('slider_active');
   }
@@ -71,3 +72,5 @@ function move(event) {
 }
 
 move();
+
+//---------------!!! END OF SLIDER !!!---------------//
