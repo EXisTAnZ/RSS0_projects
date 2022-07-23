@@ -98,6 +98,10 @@
     }
 
     /*!!! Destinations block !!!*/
+    .slider_arrows {
+        display: flex;
+        justify-content: space-between;
+    }
     .slide {
         width: 360px;
         min-width: 360px;

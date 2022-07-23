@@ -93,9 +93,11 @@ header {
     text-decoration: none;
     margin-left: 5px;
 }
+
 .header_form {
     margin-left: -30px;
 }
+
 .header_nav {
     margin-left: -65px;
 }
@@ -242,12 +244,22 @@ header {
     padding-top: 5px;
 }
 
+.slider_arrows {
+    display: none;
+    width: 90%;
+    position: absolute;
+    top: 38%;
+    left: 5%;
+}
+
 .slider_img {
     border-radius: 16px;
 }
+
 .slider_container {
     transition: 1.5s;
 }
+
 .slider {
     display: flex;
     justify-content: center;
@@ -294,10 +306,8 @@ header {
     appearance: none;
     cursor: pointer;
 }
-.slider_item .active, 
-.slider_item:hover,
-.slider_item:focus,
-.slider_item:active {
+
+.slider_active {
     opacity: 0.75;
     background: #F2785C;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -350,9 +360,11 @@ header {
     max-width: 760px;
     margin: 0px;
 }
+
 .stories_text_m {
     display: none;
 }
+
 .stories_text a {
     font-weight: 700;
     color: #0D606F;
