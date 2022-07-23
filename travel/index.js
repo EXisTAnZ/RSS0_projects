@@ -3,7 +3,7 @@ function sleep(millis) {
   var t = (new Date()).getTime();
   var i = 0;
   while (((new Date()).getTime() - t) < millis) {
-      i++;
+    i++;
   }
 }
 //слайдер
@@ -12,6 +12,8 @@ let slidercontainer = document.getElementById('slidercontainer'),
   radioSlider = document.getElementsByClassName('slider_item'),
   length = 0,
   slides = document.getElementsByClassName('slide');
+
+
 function addNameId(arr) {
   let massive = ['prev', 'cur', 'next'];
   for (let i = 0; i < arr.length; i++) {
@@ -22,14 +24,20 @@ function getSlidesStatus() {
   prev = document.getElementById('prev');
   cur = document.getElementById('cur');
   next = document.getElementById('next');
+  ar_prev = document.getElementById('arrow_left');
+  ar_next = document.getElementById('arrow_right');
+
   cur.removeEventListener('click', move);
   prev.addEventListener('click', move);
   next.addEventListener('click', move);
+
+  ar_prev.onclick = (e) => prev.click();
+  ar_next.onclick = (e) => next.click();
 }
 for (const radio of radioSlider) {
   radio.onclick = (e) => {
     //get number of class radio convert it to slide# and click on corresponding slide   
-    document.querySelector('.slide'+e.target.className.substring(17,18)).click(); 
+    document.querySelector('.slide' + e.target.className.substring(17, 18)).click();
   }
 }
 addNameId(slides);
@@ -40,7 +48,7 @@ function move(event) {
   getSlidesStatus();
   let direction;
   direction = (event.target.id == 'next') ? 1 : -1;
-  
+
   if (direction == -1) {
     length += parseFloat(getComputedStyle(prev).width)
     slider.prepend(next.cloneNode(true));
@@ -54,10 +62,9 @@ function move(event) {
   slider.style.transform = `translateX(${-length}px)`;
   slidercontainer.style.transform = `translateX(${length}px)`;
 
-  for (const radio of radioSlider){
-    radio.classList.remove('active');
-    document.querySelector('.radio'+event.target.className.substring(11,12)).classList.add('active');
-    console.log(radio.classList, '.radio'+event.target.className.substring(11,12))
+  for (const radio of radioSlider) {
+    radio.classList.remove('slider_active');
+    document.querySelector('.radio' + event.target.className.substring(11, 12)).classList.add('slider_active');
   }
   addNameId(slides);
   getSlidesStatus();
