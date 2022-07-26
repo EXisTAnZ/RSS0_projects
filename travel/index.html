@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel ver 2.00</title>
+    <title>Travel ver 3.00</title>
     <link rel="icon" href="assets/svg/icon.svg">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
@@ -41,7 +41,7 @@
             </ul>
         </nav>
         <form action="#" class="header_form">
-            <button type="button" class="header_button">Login</button>
+            <button type="button" class="header_button" id="header_button">Login</button>
         </form>
     </header>
     <main>
@@ -221,6 +221,57 @@
 
         </div>
     </footer>
+    <div class="popup popup-visible" id="popup">
+        <div class="popup_inner">
+            <h2 class="popup_title" id="popup_title">Login to your account</h2>
+            <button class="sign-in sign-in-google">
+                <img src="assets/svg/fb.svg" alt="facebook_logo" class="sign-in-icon">
+                <span class="sign-in-text">
+                    Sign In with Facebook
+                </span>
+            </button>
+            <button class="sign-in sign-in-facebook">
+                <img src="assets/svg/google.svg" alt="google_logo" class="sign-in-icon">
+                <span class="sign-in-text">
+                    Sign In with Google
+                </span>
+            </button>
+            <div class="popup_element">
+                <p class="popup_element-text">
+                    or
+                </p>
+            </div>
+            <div class="popup_account">
+                <div class="account_mail">
+                    <p class="account_text">
+                        E-mail
+                    </p>
+                </div>
+                <input type="email" class="account_input" id="login">
+            </div>
+            <div class="popup_account popup_account-last">
+                <div class="account_mail">
+                    <p class="account_text">
+                        Password
+                    </p>
+                </div>
+                <input type="password" class="account_input" id="password">
+                <button class="sign-in sign-in-account" id="loginButton">
+                    <span class="sign-in-text sing-in-text-bottom" id="popup_btn">Sign In</span>
+                </button>
+                <div class="recovery">
+                    <a href="#" class="recovery-link">
+                        Forgot Your Password?
+                    </a>
+                </div>
+            </div>
+            <div class="popup_footer">
+                <p class="popup_footer-text" id="footer_text">Don't have an account?</p>
+                <a class="register_link" id="clickToCreate">Register</a>
+            </div>
+            
+        </div>
+    </div>
     <script src="index.js"></script>
 </body>
 
