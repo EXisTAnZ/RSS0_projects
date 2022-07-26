@@ -6,6 +6,24 @@ function sleep(millis) {
     i++;
   }
 }
+//---------------!!! BURGER !!!---------------//
+let burger = document.getElementById("burger");
+let button = document.getElementById("burger_icon");
+let cross = document.getElementById("burger_cross");
+
+button.addEventListener('click', e => {
+  e.stopPropagation();
+  burger.classList.add('burger-active');
+});
+
+document.addEventListener('click', e => {
+  let element = e.target;
+  let its_hamburger = element == burger;
+  if (burger.classList.contains('burger-active') && !its_hamburger) {
+    burger.classList.remove('burger-active');
+  }
+})
+
 //---------------!!! SLIDER !!!---------------//
 
 let slidercontainer = document.getElementById('slidercontainer'),

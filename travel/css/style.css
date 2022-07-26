@@ -126,9 +126,14 @@ header {
     color: #FFFFFF;
     text-decoration: none;
 }
+
 .header_m {
     display: none;
-    }
+}
+
+.burger {
+    display: none;
+}
 
 /*!!! preview block !!!*/
 .preview {
