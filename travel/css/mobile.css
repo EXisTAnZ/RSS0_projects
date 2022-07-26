@@ -56,8 +56,6 @@
         padding-bottom: 100px;
     }
 
-
-
     .burger {
         transform: translate(0, -250px);
         display: block;
@@ -74,6 +72,7 @@
         transform: translateX(0);
         opacity: 1;
     }
+
     .burger_cross {
         position: absolute;
         top: 15px;
@@ -84,6 +83,7 @@
         list-style: none;
         text-decoration: none;
     }
+
 
     .burger_nav_item a{
         font-family: 'Red Hat Text';
