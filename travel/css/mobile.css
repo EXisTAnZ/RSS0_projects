@@ -45,10 +45,15 @@
 
     .preview_content {
         padding-left: 15px;
-        padding-top: 126px;
+        padding-right: 15px;
+        padding-top: 15px;
         height: auto;
     }
-
+    .header_m {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 100px;
+    }
     .preview_title {
         display: none;
     }
