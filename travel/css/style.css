@@ -465,14 +465,12 @@ footer {
 }
 
 .popup_title {
-    margin-top: 25px;
-    margin-bottom: 30px;
+    margin-top: 20px;
+    margin-bottom: 21px;
     font-size: 32px;
     font-family: 'Aleo', serif;
     font-weight: 700;
     color: #0d606f;
-    ;
-    letter-spacing: 0.05px;
 }
 
 .sign-in {
@@ -488,14 +486,15 @@ footer {
 
 .sign-in-google {
     font-weight: 400;
-    margin-bottom: 20px;
+    margin-bottom: 17px;
     color: #FFFFFF;
 }
 
 
 .sign-in-facebook {
     font-weight: 400;
-    margin-bottom: 29px;
+    margin-top: 0px;
+    margin-bottom: 28px;
     background-color: #FFFFFF;
     color: #0D606F;
 }
@@ -553,7 +552,8 @@ footer {
 }
 
 .popup_account {
-    margin-bottom: 17px;
+    margin-top: -24px;
+    margin-bottom: 24px;
 }
 
 .popup_account-last .account_input {
