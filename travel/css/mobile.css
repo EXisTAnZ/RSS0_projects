@@ -45,8 +45,51 @@
 
     .preview_content {
         padding-left: 15px;
-        padding-top: 126px;
+        padding-right: 15px;
+        padding-top: 15px;
         height: auto;
+    }
+
+    .header_m {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 100px;
+    }
+
+    .burger-active {
+        visibility: visible;
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    .burger {
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        padding: 5px;
+        border-radius: 10px;
+        background-color: #F2785C;
+    }
+
+    .burger_cross {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+    }
+
+    .burger_nav_list {
+        list-style: none;
+        text-decoration: none;
+    }
+
+    .burger_nav_item {
+        font-family: 'Red Hat Text';
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 21px;
+        color: #FFFFFF;
+        text-decoration: none;
     }
 
     .preview_title {
