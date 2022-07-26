@@ -127,6 +127,14 @@ header {
     text-decoration: none;
 }
 
+.header_m {
+    display: none;
+}
+
+.burger {
+    display: none;
+}
+
 /*!!! preview block !!!*/
 .preview {
     background: url(../assets/img/bg_head_main.jpg) no-repeat center;

@@ -6,6 +6,24 @@ function sleep(millis) {
     i++;
   }
 }
+//---------------!!! BURGER !!!---------------//
+let burger = document.getElementById("burger");
+let button = document.getElementById("burger_icon");
+let cross = document.getElementById("burger_cross");
+
+button.addEventListener('click', e => {
+  e.stopPropagation();
+  burger.classList.add('burger-active');
+});
+
+document.addEventListener('click', e => {
+  let element = e.target;
+  let its_hamburger = element == burger;
+  if (burger.classList.contains('burger-active') && !its_hamburger) {
+    burger.classList.remove('burger-active');
+  }
+})
+
 //---------------!!! SLIDER !!!---------------//
 
 let slidercontainer = document.getElementById('slidercontainer'),
@@ -97,6 +115,7 @@ move();
   const popupButton = document.getElementById('popup_btn');
   const footerText = document.getElementById('footer_text');
   const loginButton = document.getElementById('loginButton');
+  const accountLink = document.getElementById('account_link')
   
   
   function ChangePopUpWindow(e) {
@@ -106,6 +125,7 @@ move();
       popupButton.innerHTML = popupForms.btn;
       footerText.innerHTML = popupForms.footer;
       popupClick.innerHTML = popupForms.link;
+
   }
 
   function makePopUpVisible(e){
@@ -115,6 +135,8 @@ move();
       popupButton.innerHTML = loginForm.btn;
       footerText.innerHTML = loginForm.footer;
       popupClick.innerHTML = loginForm.link;
+      e.stopPropagation();
+      burger.classList.remove('burger-active');
       popup.classList.toggle('popup-visible');
   }
 
@@ -132,7 +154,7 @@ move();
       let passwordValue = document.getElementById('password').value;
       alert(`Login: ${loginValue}\nPassword: ${passwordValue}`);
   }
-
+  accountLink.addEventListener('click',makePopUpVisible);
   popupClick.addEventListener('click', ChangePopUpWindow);
   headerButton.addEventListener('click', makePopUpVisible);
   loginButton.addEventListener('click', alertLoginPassword);
