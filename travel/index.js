@@ -74,3 +74,66 @@ function move(event) {
 move();
 
 //---------------!!! END OF SLIDER !!!---------------//
+
+//---------------!!! POPUP !!!-----------------------//
+
+  const loginForm = {
+      title: "Login to your account",
+      btn: "Sign In",
+      footer: "Don't have an account?",
+      link: "Register"
+  }
+  const registerForm = {
+      title: "Create account",
+      btn: "Sign Up",
+      footer: "Already have an account?",
+      link: "Log in"
+  }
+  const headerButton = document.getElementById('header_button')
+  const popupClassName = 'popup-active';
+  const popup = document.getElementById('popup');
+  const popupClick = document.getElementById('clickToCreate');
+  const popupTitle = document.getElementById('popup_title');
+  const popupButton = document.getElementById('popup_btn');
+  const footerText = document.getElementById('footer_text');
+  const loginButton = document.getElementById('loginButton');
+  
+  
+  function ChangePopUpWindow(e) {
+      let popupForms = (e.target.innerHTML === "Register")?registerForm:loginForm;
+      popup.classList.toggle(popupClassName);
+      popupTitle.innerHTML = popupForms.title;
+      popupButton.innerHTML = popupForms.btn;
+      footerText.innerHTML = popupForms.footer;
+      popupClick.innerHTML = popupForms.link;
+  }
+
+  function makePopUpVisible(e){
+      
+      popup.classList.remove(popupClassName);
+      popupTitle.innerHTML = loginForm.title;
+      popupButton.innerHTML = loginForm.btn;
+      footerText.innerHTML = loginForm.footer;
+      popupClick.innerHTML = loginForm.link;
+      popup.classList.toggle('popup-visible');
+  }
+
+  function makePopUpInvisible(e) {
+      let target = e.target;
+      let its_popup = popup == target || popup.contains(target);
+      if (popup.classList.contains('popup-visible') && !its_popup) {
+          popup.classList.remove('popup-visible');
+          
+        }
+  }
+
+  function alertLoginPassword() {
+      let loginValue = document.getElementById('login').value;
+      let passwordValue = document.getElementById('password').value;
+      alert(`Login: ${loginValue}\nPassword: ${passwordValue}`);
+  }
+
+  popupClick.addEventListener('click', ChangePopUpWindow);
+  headerButton.addEventListener('click', makePopUpVisible);
+  loginButton.addEventListener('click', alertLoginPassword);
+  document.addEventListener('click', makePopUpInvisible);
