@@ -139,11 +139,26 @@
     }
 
     .steps_caption {
+        margin-top: 15px;
         font-size: 10px;
         line-height: 12px;
     }
+    .steps_item_bycicle {
+        width: 90px;
+        text-align: left;
+    }
+    .steps_item_calc {
+        margin-left: 10px;
+    }
+    .steps_item_fly {
+        width: 90px;
+        text-align: right;
+    }
 
     /*!!! Destinations block !!!*/
+    .destinations {
+        margin-bottom: 35px;
+    }
     .slider_arrows {
         display: flex;
         justify-content: space-between;

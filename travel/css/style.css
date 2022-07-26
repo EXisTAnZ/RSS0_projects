@@ -470,7 +470,7 @@ footer {
     font-size: 32px;
     font-family: 'Aleo', serif;
     font-weight: 700;
-    color: #0d606f;
+    color: #0D606F
 }
 
 .sign-in {
@@ -620,7 +620,7 @@ footer {
 .register_link {
     font-size: 15px;
     font-weight: 700;
-    color: rgba(13, 96, 111, 100%);
+    color: #0D606F;
     ;
     text-decoration: underline;
     transition: 0.2s linear;
@@ -628,7 +628,7 @@ footer {
 
 .register_link:hover {
     cursor: pointer;
-    color: #a8a3a3;
+    color: #407881
 }
 
 .popup-active .sign-in-account {
