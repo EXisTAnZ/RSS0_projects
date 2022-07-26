@@ -96,7 +96,7 @@ move();
 //---------------!!! POPUP !!!-----------------------//
 
   const loginForm = {
-      title: "Login to your account",
+      title: "Log in to your account",
       btn: "Sign In",
       footer: "Don't have an account?",
       link: "Register"
