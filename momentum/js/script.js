@@ -1,8 +1,10 @@
 const body = document.querySelector('body'),
   slidePrev = document.querySelector('.slide-prev'),
   slideNext = document.querySelector('.slide-next'),
-  time = document.querySelector('.time');
-  date = document.querySelector('.date');
+  time = document.querySelector('.time'),
+  date = document.querySelector('.date'),
+  greeting = document.queryCommandValue('.greeting'),
+  name = document.querySelector('.name')
   
 
 function getRandomSlide(max) {
@@ -52,3 +54,21 @@ const showTime = () => {
 };
 showTime();
 showDate();
+
+const showGreeting = () => {
+  const timeOfDay = getTimeOfDay();
+  greeting.textContent = `Good ${timeOfDay}`;
+};
+showGreeting();
+
+function setLocalStorage() {
+  localStorage.setItem('name', name.value);
+}
+window.addEventListener('beforeunload', setLocalStorage)
+
+function getLocalStorage() {
+  if(localStorage.getItem('name')) {
+    name.value = localStorage.getItem('name');
+  }
+}
+window.addEventListener('load', getLocalStorage)
