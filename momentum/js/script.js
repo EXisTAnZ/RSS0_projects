@@ -1,6 +1,9 @@
 const body = document.querySelector('body'),
   slidePrev = document.querySelector('.slide-prev'),
-  slideNext = document.querySelector('.slide-next');
+  slideNext = document.querySelector('.slide-next'),
+  time = document.querySelector('.time');
+  date = document.querySelector('.date');
+  
 
 function getRandomSlide(max) {
   return Math.floor(Math.random() * max) + 1;
@@ -27,3 +30,25 @@ const getTimeOfDay = () => {
   const id = Math.floor(hours / 6);
   return arrTimesOfDay[id];
 };
+setBg();
+
+const showDate = () => {
+  const day = new Date();
+  const options = {
+    weekday: 'long',
+    month: 'long',
+    day: 'numeric',
+    timeZone: 'UTC',
+  };
+  const currentDate = day.toLocaleDateString('en-En', options);
+  date.textContent = currentDate;
+};
+
+const showTime = () => {
+  const date = new Date();
+  const currentTime = date.toLocaleTimeString();
+  time.textContent = currentTime;
+  setTimeout(showTime, 1000);
+};
+showTime();
+showDate();
