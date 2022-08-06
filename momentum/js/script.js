@@ -109,7 +109,7 @@ async function getQuotes() {
   const quotes = 'quotes.json';
   const res = await fetch(quotes);
   const data = await res.json();
-  const id = getRandomNum(3)-1;
+  const id = getRandomNum(9);
   quote.textContent = data[id].text;
   author.textContent = data[id].author;
 }
