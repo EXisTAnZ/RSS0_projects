@@ -51,6 +51,9 @@ body {
   cursor: pointer;
   transition: .3s;
 }
+.play-song {
+  gap: 10px;
+}
 
 .play-item:hover {
   opacity: 1;
@@ -64,7 +67,7 @@ body {
   font-weight: 900;
 }
 
-.item-active::before {
+.item-active {
   color: #C5B358;
 }
 

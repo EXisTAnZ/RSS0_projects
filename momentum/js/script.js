@@ -1,6 +1,4 @@
 import playList from './playList.js';
-console.log(playList);
-
 
 const body = document.querySelector('body'),
   slidePrev = document.querySelector('.slide-prev'),
@@ -18,7 +16,9 @@ const body = document.querySelector('body'),
   quote = document.querySelector('.quote'),
   author = document.querySelector('.author'),
   changeQuote = document.querySelector('.change-quote'),
-  playListContainer = document.querySelector('.play-list')
+  playListContainer = document.querySelector('.play-list'),
+  playSong2 = document.querySelectorAll('.play-song'),
+  playButton = document.querySelector('.play')
   
 // randomizer
 function getRandomNum(max) {
@@ -134,21 +134,51 @@ changeQuote.addEventListener('click', getQuotes);
 const buildPL = () => {
   playList.forEach((element) => {
     const li = document.createElement('li');
+    li.classList.add('play-item')
     playListContainer.append(li);
 
-    const playItem = document.createElement('div');
-    playItem.classList.add('play-item');
-    li.append(playItem);
+    const playSong = document.createElement('div');
+    playSong.classList.add('play-song');
+    li.append(playSong);
 
-    const span = document.createElement('span');
-    span.textContent = element.title;
-    playItem.append(span);
+    const sSong = document.createElement('span');
+    sSong.textContent = element.title;
+    playSong.append(sSong);
 
     const sDurat = document.createElement('span');
     sDurat.classList.add('duration');
     sDurat.textContent = element.duration;
-    playItem.append(sDurat);
+    playSong.append(sDurat);
 
   });
 };
 buildPL();
+
+const playSong = document.querySelectorAll('.play-song'),
+  audio = new Audio();
+let isPlay = false,
+  playNum = 0;
+
+const playAudio = () => {
+  if (!isPlay) {
+    audio.src = playList[playNum].src;
+    audio.currentTime = 0;
+    isPlay = true;
+
+    playButton.classList.add('pause');
+
+    playSong.forEach((element) => {
+      element.classList.remove('item-active');
+    });
+    console.log (playSong);
+    playSong[playNum].classList.add('item-active');
+
+    audio.play();
+
+  } else {
+    isPlay = false;
+    playButton.classList.remove('pause');
+    audio.pause();
+  }
+};
+playButton.addEventListener('click', playAudio);
