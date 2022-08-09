@@ -17,13 +17,15 @@ const body = document.querySelector('body'),
   humidity = document.querySelector('.humidity'),
   quote = document.querySelector('.quote'),
   author = document.querySelector('.author'),
-  changeQuote = document.querySelector('.change-quote')
+  changeQuote = document.querySelector('.change-quote'),
+  playListContainer = document.querySelector('.play-list')
   
-
+// randomizer
 function getRandomNum(max) {
   return Math.floor(Math.random() * max) + 1;
 }
 
+// bg slider
 const setBg = () => {
   const timeOfDay = getTimeOfDay();
   const bgNum = getRandomNum(20);
@@ -38,6 +40,7 @@ const setBg = () => {
 slideNext.addEventListener('click', setBg);
 slidePrev.addEventListener('click', setBg);
 
+// time of the day
 const getTimeOfDay = () => {
   const date = new Date();
   const hours = date.getHours();
@@ -47,6 +50,7 @@ const getTimeOfDay = () => {
 };
 setBg();
 
+// show date
 const showDate = () => {
   const day = new Date();
   const options = {
@@ -59,6 +63,7 @@ const showDate = () => {
   date.textContent = currentDate;
 };
 
+// show time
 const showTime = () => {
   const date = new Date();
   const currentTime = date.toLocaleTimeString();
@@ -68,12 +73,14 @@ const showTime = () => {
 showTime();
 showDate();
 
+// show greeting
 const showGreeting = () => {
   const timeOfDay = getTimeOfDay();
   greeting.textContent = `Good ${timeOfDay},`;
 };
 showGreeting();
 
+// local stirage save/load
 function setLocalStorage() {
   localStorage.setItem('name', name.value);
   localStorage.setItem('city', city.value);
@@ -88,6 +95,7 @@ function getLocalStorage() {
 
 window.addEventListener('load', getLocalStorage)
 
+// weather
 async function getWeather() {
   city.value = localStorage.getItem('city');
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=en&appid=6ce0dfa51ad31904fa3bf991156c8033&units=metric`;
@@ -109,6 +117,7 @@ city.onchange = () => {
   getWeather();
 };
 
+// qoutes load
 async function getQuotes() {  
   const quotes = 'quotes.json';
   const res = await fetch(quotes);
@@ -120,3 +129,26 @@ async function getQuotes() {
 
 getQuotes();
 changeQuote.addEventListener('click', getQuotes);
+
+//audio player
+const buildPL = () => {
+  playList.forEach((element) => {
+    const li = document.createElement('li');
+    playListContainer.append(li);
+
+    const playItem = document.createElement('div');
+    playItem.classList.add('play-item');
+    li.append(playItem);
+
+    const span = document.createElement('span');
+    span.textContent = element.title;
+    playItem.append(span);
+
+    const sDurat = document.createElement('span');
+    sDurat.classList.add('duration');
+    sDurat.textContent = element.duration;
+    playItem.append(sDurat);
+
+  });
+};
+buildPL();
