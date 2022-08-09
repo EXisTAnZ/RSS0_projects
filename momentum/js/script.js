@@ -165,16 +165,12 @@ const playAudio = () => {
     audio.src = playList[playNum].src;
     audio.currentTime = 0;
     isPlay = true;
-
     playButton.classList.add('pause');
-
     playSong.forEach((element) => {
       element.classList.remove('item-active');
     });
     playSong[playNum].classList.add('item-active');
-
     audio.play();
-
   } else {
     isPlay = false;
     playButton.classList.remove('pause');
@@ -208,5 +204,6 @@ const playPrev = () => {
 };
 
 playPrevButton.addEventListener('click', playPrev);
-
 audio.addEventListener('ended', playNext);
+
+//progress bar
