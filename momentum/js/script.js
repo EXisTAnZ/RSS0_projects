@@ -1,3 +1,7 @@
+import playList from './playList.js';
+console.log(playList);
+
+
 const body = document.querySelector('body'),
   slidePrev = document.querySelector('.slide-prev'),
   slideNext = document.querySelector('.slide-next'),
