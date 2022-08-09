@@ -209,3 +209,4 @@ const playPrev = () => {
 
 playPrevButton.addEventListener('click', playPrev);
 
+audio.addEventListener('ended', playNext);
