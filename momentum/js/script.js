@@ -17,8 +17,9 @@ const body = document.querySelector('body'),
   author = document.querySelector('.author'),
   changeQuote = document.querySelector('.change-quote'),
   playListContainer = document.querySelector('.play-list'),
-  playSong2 = document.querySelectorAll('.play-song'),
-  playButton = document.querySelector('.play')
+  playButton = document.querySelector('.play'),
+  playNextButton = document.querySelector('.play-next'),
+  playPrevButton = document.querySelector('.play-prev')
   
 // randomizer
 function getRandomNum(max) {
@@ -170,7 +171,6 @@ const playAudio = () => {
     playSong.forEach((element) => {
       element.classList.remove('item-active');
     });
-    console.log (playSong);
     playSong[playNum].classList.add('item-active');
 
     audio.play();
@@ -182,3 +182,30 @@ const playAudio = () => {
   }
 };
 playButton.addEventListener('click', playAudio);
+
+playSong.forEach((el, id) => {
+  el.addEventListener('click', () => {
+    playNum = id;
+    isPlay = false;
+    playAudio();
+  });
+});
+
+const playNext = () => {
+  playNum += 1;
+  if (playNum > playList.length - 1) playNum = 0;
+  isPlay = false;
+  playAudio();
+};
+
+playNextButton.addEventListener('click', playNext);
+
+const playPrev = () => {
+  playNum -= 1;
+  if (playNum < 0) playNum = playList.length - 1;
+  isPlay = false;
+  playAudio();
+};
+
+playPrevButton.addEventListener('click', playPrev);
+
