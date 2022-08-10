@@ -19,7 +19,13 @@ const body = document.querySelector('body'),
   playListContainer = document.querySelector('.play-list'),
   playButton = document.querySelector('.play'),
   playNextButton = document.querySelector('.play-next'),
-  playPrevButton = document.querySelector('.play-prev')
+  playPrevButton = document.querySelector('.play-prev'),
+  audioLen = document.querySelector('.length'),
+  audioName = document.querySelector('.song-name'),
+  volumeButton = document.querySelector('.volume-button'),
+  volumeEl = document.querySelector('.volume'),
+  volumeSlider = document.querySelector('.volume-slider'),
+  volumePercentage = document.querySelector('.volume-percentage')
   
 // randomizer
 function getRandomNum(max) {
@@ -143,6 +149,7 @@ const buildPL = () => {
     li.append(playSong);
 
     const sSong = document.createElement('span');
+    sSong.classList.add('song-name')
     sSong.textContent = element.title;
     playSong.append(sSong);
 
@@ -206,4 +213,48 @@ const playPrev = () => {
 playPrevButton.addEventListener('click', playPrev);
 audio.addEventListener('ended', playNext);
 
+audio.addEventListener(
+  "loadeddata",
+  () => {
+    audioName.textContent = document.querySelector('.item-active .song-name').textContent;
+    audioLen.textContent = getTimeCodeFromNum(audio.duration);
+    audio.volume = .75;
+  },
+  false
+);
+
 //progress bar
+
+//volume slider click change volume
+volumeSlider.addEventListener('click', e => {
+  const sliderWidth = window.getComputedStyle(volumeSlider).width;
+  const newVolume = e.offsetX / parseInt(sliderWidth);
+  audio.volume = newVolume;
+  volumePercentage.style.width = newVolume * 100 + '%';
+}, false)
+
+//volume button mute\unmute
+volumeButton.addEventListener("click", () => {
+  audio.muted = !audio.muted;
+  if (audio.muted) {
+    volumeEl.classList.remove("icono-volumeMedium");
+    volumeEl.classList.add("icono-volumeMute");
+  } else {
+    volumeEl.classList.add("icono-volumeMedium");
+    volumeEl.classList.remove("icono-volumeMute");
+  }
+});
+
+//turn 128 seconds into 2:08
+function getTimeCodeFromNum(num) {
+  let seconds = parseInt(num);
+  let minutes = parseInt(seconds / 60);
+  seconds -= minutes * 60;
+  const hours = parseInt(minutes / 60);
+  minutes -= hours * 60;
+
+  if (hours === 0) return `${minutes}:${String(seconds % 60).padStart(2, 0)}`;
+  return `${String(hours).padStart(2, 0)}:${minutes}:${String(
+    seconds % 60
+  ).padStart(2, 0)}`;
+}

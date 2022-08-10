@@ -34,11 +34,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 28px;
+  margin-bottom: 10px;
 }
 .play-info {
   display: flex;
   padding-left: 20px;
+  justify-content: space-between;
+  width: 280px;
 }
 .play-info .duration {
   display: flex;
@@ -62,6 +64,7 @@ body {
 .play-list {
   text-align: left;
 }
+
 /*volume button*/
 .volume-container {
   cursor: pointer;
@@ -71,7 +74,7 @@ body {
 .volume-button {
   height: 26px;
   width: 26px;
-  color: #fff;
+  color: white;
   display: flex;
   align-items: center;
 }
@@ -107,7 +110,8 @@ body {
   transition: .3s;
 }
 .play-song {
-  gap: 10px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .play-item:hover {
