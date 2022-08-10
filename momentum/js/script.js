@@ -25,7 +25,10 @@ const body = document.querySelector('body'),
   volumeButton = document.querySelector('.volume-button'),
   volumeEl = document.querySelector('.volume'),
   volumeSlider = document.querySelector('.volume-slider'),
-  volumePercentage = document.querySelector('.volume-percentage')
+  volumePercentage = document.querySelector('.volume-percentage'),
+  timeline = document.querySelector('.timeline'),
+  progressBar = document.querySelector('.progress'),
+  currentDuration = document.querySelector('.duration .current')
   
 // randomizer
 function getRandomNum(max) {
@@ -224,7 +227,17 @@ audio.addEventListener(
 );
 
 //progress bar
-
+//click on timeline to skip around
+timeline.addEventListener("click", e => {
+  const timelineWidth = window.getComputedStyle(timeline).width;
+  const timeToSeek = e.offsetX / parseInt(timelineWidth) * audio.duration;
+  audio.currentTime = timeToSeek;
+}, false);
+//check audio percentage and update time accordingly
+setInterval(() => {
+  progressBar.style.width = audio.currentTime / audio.duration * 100 + "%";
+  currentDuration.textContent = getTimeCodeFromNum(audio.currentTime);
+}, 500);
 //volume slider click change volume
 volumeSlider.addEventListener('click', e => {
   const sliderWidth = window.getComputedStyle(volumeSlider).width;
