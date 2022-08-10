@@ -62,6 +62,40 @@ body {
 .play-list {
   text-align: left;
 }
+/*volume button*/
+.volume-container {
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
+.volume-button {
+  height: 26px;
+  width: 26px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.volume-container .volume-slider {
+  position: absolute;
+  left: -3px;
+  top: 10px;
+  z-index: -1;
+  width: 0;
+  height: 10px;
+  background: white;
+  box-shadow: 0 0 20px #000a;
+  transition: 0.25s;
+}
+.volume-container .volume-slider .volume-percentage {
+  background: coral;
+  height: 100%;
+  width: 75%;
+}
+.volume-container:hover .volume-slider {
+  left: -123px;
+  width: 120px;
+}
 
 .play-item {
   position: relative;
