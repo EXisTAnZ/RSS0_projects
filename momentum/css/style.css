@@ -53,6 +53,13 @@ body {
   position: relative;
   cursor: pointer;
   box-shadow: 0 2px 10px 0 #0008;
+  margin-bottom: 12px;
+  transition: 0.2s;
+}
+.timeline:hover {
+  margin-top: -2px;
+  height: 6px;
+  margin-bottom: 10px;
 }
 .timeline .progress {
   background: coral;
