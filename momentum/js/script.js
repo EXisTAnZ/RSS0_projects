@@ -28,17 +28,18 @@ const body = document.querySelector('body'),
   volumePercentage = document.querySelector('.volume-percentage'),
   timeline = document.querySelector('.timeline'),
   progressBar = document.querySelector('.progress'),
-  currentDuration = document.querySelector('.duration .current')
+  currentDuration = document.querySelector('.duration .current'),
+  weatherError = document.querySelector('.weather-error')
   
 // randomizer
 function getRandomNum(max) {
   return Math.floor(Math.random() * max) + 1;
 }
-
+let slideNum = getRandomNum(20);
 // bg slider
 const setBg = () => {
   const timeOfDay = getTimeOfDay();
-  const bgNum = getRandomNum(20);
+  const bgNum = slideNum;
 
   const img = new Image();
   img.src = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timeOfDay}/${bgNum.toString().padStart(2, '0')}.jpg`;
@@ -46,9 +47,19 @@ const setBg = () => {
     body.style.backgroundImage = `url(${img.src})`;
   };
 };
+const nextSlide = () => {
+  if (slideNum == 20) slideNum = 0;
+  slideNum++;
+  setBg();
+}
+const prevSlide = () => {
+  if (slideNum == 1) slideNum = 21;
+  slideNum--;
+  setBg();
+}
 
-slideNext.addEventListener('click', setBg);
-slidePrev.addEventListener('click', setBg);
+slideNext.addEventListener('click', nextSlide);
+slidePrev.addEventListener('click', prevSlide);
 
 // time of the day
 const getTimeOfDay = () => {
@@ -111,13 +122,20 @@ async function getWeather() {
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=en&appid=6ce0dfa51ad31904fa3bf991156c8033&units=metric`;
   const res = await fetch(url);
   const data = await res.json();
-
+  if (data.cod == 200) {
     weatherIcon.classList.add(`owf-${data.weather[0].id}`);
     temperature.textContent = `${Math.floor(data.main.temp)}°C`;
     weatherDescription.textContent = data.weather[0].description;
     wind.textContent = `Wind speed: ${Math.floor(data.wind.speed)} m/s`;
     humidity.textContent = `Humidity: ${data.main.humidity}%`;
-
+    weatherError.textContent = '';
+  } else {
+    weatherError.textContent = data.message;
+    temperature.textContent = '';
+    weatherDescription.textContent = '';
+    wind.textContent = '';
+    humidity.textContent = '';
+  }
 }
 getWeather();
 
@@ -221,7 +239,7 @@ audio.addEventListener(
   () => {
     audioName.textContent = document.querySelector('.item-active .song-name').textContent;
     audioLen.textContent = getTimeCodeFromNum(audio.duration);
-    audio.volume = .75;
+    //audio.volume = .75;
   },
   false
 );

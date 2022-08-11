@@ -29,7 +29,9 @@ body {
   min-height: 220px;  
   padding: 20px;
 }
-
+.player {
+  margin-left: -120px;
+}
 .player-controls {
   display: flex;
   align-items: center;
@@ -63,7 +65,7 @@ body {
 }
 .timeline .progress {
   background: coral;
-  width: 20%;
+  width: 0.1%;
   height: 100%;
   transition: 0.25s;
 }
@@ -198,7 +200,7 @@ body {
 }
 
 .weather-error {
-  margin-top: -10px;
+  margin-top: -40px;
 }
 
 .description-container {
@@ -333,6 +335,14 @@ body {
 }
 
 @media (max-width: 768px) {
+  
+  .play-info .song-name {
+    display: none;
+  }
+
+  .play-info {
+    width: 100px;
+  }
   .time {
     min-height: 80px;
     font-size: 72px;    
