@@ -1,7 +1,8 @@
 @font-face {
   font-family: 'Arial-MT';
-  src: url("../assets/fonts/Arial-MT.woff"); /* Путь к файлу со шрифтом */
- }
+  src: url("../assets/fonts/Arial-MT.woff");
+  /* Путь к файлу со шрифтом */
+}
 
 * {
   box-sizing: border-box;
@@ -26,28 +27,33 @@ body {
   align-items: flex-start;
   width: 100%;
   height: 30vh;
-  min-height: 220px;  
+  min-height: 220px;
   padding: 20px;
 }
+
 .player {
   margin-left: -120px;
 }
+
 .player-controls {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 10px;
 }
+
 .play-info {
   display: flex;
   padding-left: 20px;
   justify-content: space-between;
   width: 280px;
 }
+
 .play-info .duration {
   display: flex;
   padding-right: 20px;
 }
+
 .timeline {
   background: white;
   width: 100%;
@@ -58,11 +64,13 @@ body {
   margin-bottom: 12px;
   transition: 0.2s;
 }
+
 .timeline:hover {
   margin-top: -2px;
   height: 6px;
   margin-bottom: 10px;
 }
+
 .timeline .progress {
   background: coral;
   width: 0.1%;
@@ -80,6 +88,7 @@ body {
   position: relative;
   z-index: 2;
 }
+
 .volume-button {
   height: 26px;
   width: 26px;
@@ -99,11 +108,13 @@ body {
   box-shadow: 0 0 20px #000a;
   transition: 0.25s;
 }
+
 .volume-container .volume-slider .volume-percentage {
   background: coral;
   height: 100%;
   width: 75%;
 }
+
 .volume-container:hover .volume-slider {
   left: -123px;
   width: 120px;
@@ -118,6 +129,7 @@ body {
   cursor: pointer;
   transition: .3s;
 }
+
 .play-song {
   display: flex;
   justify-content: space-between;
@@ -128,7 +140,7 @@ body {
 }
 
 .play-item::before {
-  content: "\2713";  
+  content: "\2713";
   position: absolute;
   left: 0;
   top: 2px;
@@ -152,7 +164,7 @@ body {
   outline: 0;
   opacity: .8;
   cursor: pointer;
-  transition: .3s;  
+  transition: .3s;
 }
 
 .player-icon:hover,
@@ -165,7 +177,7 @@ body {
 .slider-icon:active,
 .change-quote:active {
   border: 0;
-  outline: 0;  
+  outline: 0;
   transform: scale(1.1);
 }
 
@@ -195,7 +207,7 @@ body {
   align-items: flex-start;
   row-gap: 5px;
   width: 180px;
-  min-height: 180px;  
+  min-height: 180px;
   text-align: left;
 }
 
@@ -218,8 +230,8 @@ body {
 /* O P T I O N S */
 .options {
   position: absolute;
-  top: 15px;
-  right: 50px;
+  top: 35px;
+  right: 60px;
   min-width: 220px;
   max-width: 320px;
   display: flex;
@@ -234,20 +246,50 @@ body {
   transition: 0.3s;
 }
 
+.options-lists {
+  display: flex;
+}
+.options-list {
+  padding-right: 10px;
+}
+.options-list-addit {
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
+  padding-left: 10px;
+}
+
+.option-item {
+  opacity: .8;
+  cursor: pointer;
+  transition: .3s;
+  list-style: none;
+  text-align: left;
+  padding: 5px;
+
+}
+.crossed {
+  text-decoration: line-through;
+}
+.option-item:hover {
+  opacity: 1;
+}
+.unvisible {
+  opacity: 0;
+}
+
 .city {
   width: 170px;
   height: 34px;
   padding: 5px;
   font-size: 20px;
   line-height: 24px;
-  color: #fff;  
+  color: #fff;
   border: 0;
   outline: 0;
   border-bottom: 1px solid #fff;
   background-color: transparent;
 }
 
-.city::placeholder {  
+.city::placeholder {
   font-size: 20px;
   color: #fff;
   opacity: .6;
@@ -261,7 +303,7 @@ body {
   align-items: center;
   width: 100%;
   height: 40vh;
-  min-height: 260px;  
+  min-height: 260px;
   padding: 20px;
 }
 
@@ -287,7 +329,7 @@ body {
   margin-bottom: 10px;
   font-family: 'Arial-MT';
   font-size: 100px;
-  letter-spacing: -4px;  
+  letter-spacing: -4px;
 }
 
 .date {
@@ -307,7 +349,7 @@ body {
 }
 
 .greeting {
-  flex: 1;  
+  flex: 1;
   padding: 10px;
   text-align: right;
 }
@@ -336,13 +378,13 @@ body {
   align-items: center;
   width: 100%;
   height: 30vh;
-  min-height: 160px;  
+  min-height: 160px;
   padding: 20px;
 }
 
 .change-quote {
   margin-bottom: 30px;
-  background-image: url("../assets/svg/reload.svg");  
+  background-image: url("../assets/svg/reload.svg");
 }
 
 .quote {
@@ -354,7 +396,7 @@ body {
 }
 
 @media (max-width: 768px) {
-  
+
   .play-info .song-name {
     display: none;
   }
@@ -362,9 +404,10 @@ body {
   .play-info {
     width: 100px;
   }
+
   .time {
     min-height: 80px;
-    font-size: 72px;    
+    font-size: 72px;
   }
 
   .greeting-container {
