@@ -30,11 +30,79 @@ const body = document.querySelector('body'),
   progressBar = document.querySelector('.progress'),
   currentDuration = document.querySelector('.duration .current'),
   weatherError = document.querySelector('.weather-error')
-  
-// randomizer
-function getRandomNum(max) {
-  return Math.floor(Math.random() * max) + 1;
+
+let language = "en",
+  blockVisible = 127,
+  photoSrcId = 0;
+
+const translates = {
+  en: {
+    weather: {
+      city: "Magas", cityPlaceholder: "[ Enter city ]",
+    },
+    greetings: {
+      night: "Good night",
+      morning: "Good morning",
+      afternoon: "Good afternoon",
+      evening: "Good evening"
+    },
+    greetingInputPlaceholder: "[ Enter name ]",
+    date: {
+      locales: "en-US",
+      options: {
+        weekday: "long",
+        month: "long",
+        day: "numeric"
+      }
+    },
+    toDo: {
+      title: "Todo List",
+      placeholder: "[ Enter tasks ]"
+    },
+    settings: {
+      title: "Options",
+      inputPlaceholder: "[ Enter tags ]",
+      blocks: ["Weather", "Audio Player", "Time", "Date", "Greetings", "Todo List", "Quotes"],
+      language: "Lang",
+      photoSource: "Photo Source"
+    }
+  },
+  ru: {
+    weather: {
+      city: "Магас", cityPlaceholder: "[ Введите город ]"
+    },
+    greetings: {
+      night: "Доброй ночи",
+      morning: "Доброе утро",
+      afternoon: "Добрый день",
+      evening: "Добрый вечер"
+    },
+    greetingInputPlaceholder: "[ Введите имя ]",
+    date: {
+      locales: "ru-RU",
+      options: {
+        weekday: "long",
+        day: "numeric",
+        month: "long"
+      }
+    },
+    toDo: {
+      title: "Список дел",
+      placeholder: "[ Введите задачи ]"
+    },
+    settings: {
+      title: "Настройки",
+      inputPlaceholder: "[ Введите тэги ]",
+      blocks: ["Погода", "Патефон", "Время", "Дата", "Приветствие", "Список дел", "Цитатник"],
+      language: "Язык",
+      photoSource: "Источник фото"
+    }
+  }
 }
+
+// randomizer
+const getRandomNum = (max) => Math.floor(Math.random() * max) + 1;
+
 let slideNum = getRandomNum(20);
 // bg slider
 const setBg = () => {
@@ -101,25 +169,36 @@ const showGreeting = () => {
 };
 showGreeting();
 
-// local stirage save/load
+// local storage save/load
 function setLocalStorage() {
   localStorage.setItem('name', name.value);
   localStorage.setItem('city', city.value);
+  localStorage.setItem('language', language);
+  localStorage.setItem('blockVisible', blockVisible);
+  localStorage.setItem('photoSrcId', photoSrcId);
 }
 window.addEventListener('beforeunload', setLocalStorage)
 
 function getLocalStorage() {
-  if(localStorage.getItem('name')) name.value = localStorage.getItem('name');
-  if (localStorage.getItem('city')) city.value = localStorage.getItem('city');
-  else city.value = 'Magas';
+  if (localStorage.getItem('name')) name.value = localStorage.getItem('name');
+  if (localStorage.getItem('city')) city.value = localStorage.getItem('city')
+  else city.value = translates[language].weather.city;
+  if (localStorage.getItem('language')) language = localStorage.getItem('language')
+  else language.value = 'en';
+  if (localStorage.getItem('blockVisible')) blockVisible = localStorage.getItem('blockVisible')
+  else blockVisible.value = 127;
+  if (localStorage.getItem('photoSrcId')) photoSrcId = localStorage.getItem('photoSrcId')
+  else photoSrcId.value = 0;
 }
+const decToBinArr = (dec) => dec.toString(2).split('');
+
 
 window.addEventListener('load', getLocalStorage)
 
 // weather
 async function getWeather() {
-  city.value = localStorage.getItem('city');
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=en&appid=6ce0dfa51ad31904fa3bf991156c8033&units=metric`;
+  city.value = translates[language].weather.city, localStorage.getItem('city') && (city.value = localStorage.getItem('city'));
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=${'ru'}&appid=6ce0dfa51ad31904fa3bf991156c8033&units=metric`;
   const res = await fetch(url);
   const data = await res.json();
   if (data.cod == 200) {
@@ -146,7 +225,7 @@ city.onchange = () => {
 };
 
 // qoutes load
-async function getQuotes() {  
+async function getQuotes() {
   const quotes = 'quotes.json';
   const res = await fetch(quotes);
   const data = await res.json();
