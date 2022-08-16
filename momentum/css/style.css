@@ -33,6 +33,7 @@ body {
 
 .player {
   margin-left: -120px;
+  transition: .5s;
 }
 
 .player-controls {
@@ -209,6 +210,7 @@ body {
   width: 180px;
   min-height: 180px;
   text-align: left;
+  transition: .5s;
 }
 
 .weather-error {
@@ -336,12 +338,14 @@ body {
   font-family: 'Arial-MT';
   font-size: 100px;
   letter-spacing: -4px;
+  transition: .5s;
 }
 
 .date {
   min-height: 28px;
   font-size: 24px;
   margin-bottom: 20px;
+  transition: .5s;
 }
 
 .greeting-container {
@@ -352,6 +356,7 @@ body {
   min-height: 48px;
   width: 100vw;
   font-size: 40px;
+  transition: .5s;
 }
 
 .greeting {
@@ -391,6 +396,10 @@ body {
 .change-quote {
   margin-bottom: 30px;
   background-image: url("../assets/svg/reload.svg");
+}
+
+.quotes {
+  transition: .5s;
 }
 
 .quote {
