@@ -30,12 +30,18 @@ const body = document.querySelector('body'),
   progressBar = document.querySelector('.progress'),
   currentDuration = document.querySelector('.duration .current'),
   weatherError = document.querySelector('.weather-error'),
+  optionsButton = document.querySelector('.options-button'),
+  optionsBar = document.querySelector('.options'),
   optionsListAddit = document.querySelector('.options-list-addit'),
-  optionsTitle = document.querySelector('.options-title')
+  optionsTitle = document.querySelector('.options-title'),
+  optionLanguage = document.querySelector('.option-language'),
+  optionPhotoSource = document.querySelector('.option-photo-source'),
+  photoTags = document.querySelector('.photo-tags')
 
-let language = "ru",
+let language = 'ru',
   blockVisible = 127,
   photoSrcId = 0;
+getLocalStorage();
 
 const translates = {
   en: {
@@ -66,7 +72,7 @@ const translates = {
     },
     options: {
       title: "Options",
-      inputPlaceholder: "[ Enter tags ]",
+      inputPlaceholder: "[ Enter tags comma separated ]",
       blocks: ["Weather", "Audio Player", "Time", "Date", "Greetings", "Todo List", "Quotes"],
       language: "Lang",
       photoSource: "Photo Source"
@@ -100,7 +106,7 @@ const translates = {
     },
     options: {
       title: "Настройки",
-      inputPlaceholder: "[ Введите тэги ]",
+      inputPlaceholder: "[ Введите тэги через запятую]",
       blocks: ["Погода", "Патефон", "Время", "Дата", "Приветствие", "Список дел", "Цитатник"],
       language: "Язык",
       photoSource: "Источник фото"
@@ -174,7 +180,8 @@ const showGreeting = () => {
 };
 showGreeting();
 
-// local storage S A V E AND L O A D
+// local storage S A V E   A N D   L O A D
+
 function setLocalStorage() {
   localStorage.setItem('name', name.value);
   localStorage.setItem('city', city.value);
@@ -188,13 +195,14 @@ function getLocalStorage() {
   if (localStorage.getItem('name')) name.value = localStorage.getItem('name');
   if (localStorage.getItem('city')) city.value = localStorage.getItem('city')
   else city.value = translates[language].weather.city;
-  if (localStorage.getItem('language')) language = localStorage.getItem('language')
-  else language.value = 'ru';
+  if (localStorage.getItem('language')) language = (localStorage.getItem('language'))
+  else language = 'en';
   if (localStorage.getItem('blockVisible')) blockVisible = localStorage.getItem('blockVisible')
   else blockVisible.value = 127;
   if (localStorage.getItem('photoSrcId')) photoSrcId = localStorage.getItem('photoSrcId')
   else photoSrcId.value = 0;
 }
+
 const decToBinArr = (dec) => dec.toString(2).split('');
 
 
@@ -222,7 +230,6 @@ async function getWeather(lang) {
     wind.textContent = '';
     humidity.textContent = '';
   }
-  console.log(lang)
 }
 getWeather();
 
@@ -234,6 +241,7 @@ city.onchange = () => {
 
 // qoutes load
 async function getQuotes() {
+  console.log(language);
   const quotes = `quotes${language}.json`;
   const res = await fetch(quotes);
   const data = await res.json();
@@ -389,28 +397,26 @@ const reshowAll = () => {
 
 // O P T I O N S
 showOptions();
-const blocksForShow = document.querySelectorAll('.block-item'),
-  arrBlocks = ['.weather', '.player', '.time', '.date', '.greeting-container', '.todo-list', '.quotes'];
 
-blocksForShow.forEach((el, id) => {
-  el.addEventListener('click', () => {
-    el.classList.toggle('crossed');
-    document.querySelector(arrBlocks[id]).classList.toggle('unvisible');
-  })
-});
+//button click
+console.log(optionsButton);
+optionsButton.addEventListener('click', () => {
+  optionsBar.classList.toggle('unvisible');
+})
 
 // language select
-const optionLanguage = document.querySelector('.option-language')
 optionLanguage.addEventListener('click', () => {
   if (language == 'ru') language = 'en'
   else language = 'ru';
-  optionLanguage.innerHTML = translates[language].options.language + ' (' + language + ')';
   reshowAll();
 })
 //show OPTIONS
 function showOptions(lang) {
   lang = language,
-    optionsTitle.innerHTML = translates[lang].options.title;
+    optionsTitle.innerHTML = translates[lang].options.title,
+    optionLanguage.innerHTML = translates[lang].options.language + ' (' + language + ')',
+    optionPhotoSource.innerHTML = translates[lang].options.photoSource + '    (' + 'GitHub' + ')',
+    photoTags.placeholder = translates[lang].options.inputPlaceholder;
   optionsListAddit.innerHTML = "";
   const blocks = translates[lang].options.blocks;
   blocks.forEach(el => {
@@ -422,10 +428,8 @@ function showOptions(lang) {
   })
   const blocksForShow = document.querySelectorAll('.block-item'),
     arrBlocks = ['.weather', '.player', '.time', '.date', '.greeting-container', '.todo-list', '.quotes'];
-
   blocksForShow.forEach((elbl, id) => {
     elbl.addEventListener('click', () => {
-      console.log(elbl);
       elbl.classList.toggle('crossed');
       document.querySelector(arrBlocks[id]).classList.toggle('unvisible');
     })

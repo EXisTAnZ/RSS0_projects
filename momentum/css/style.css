@@ -249,9 +249,12 @@ body {
 .options-lists {
   display: flex;
 }
+
 .options-list {
   padding-right: 10px;
+  max-width: 175px;
 }
+
 .options-list-addit {
   border-left: 1px solid rgba(255, 255, 255, 0.5);
   padding-left: 10px;
@@ -266,12 +269,15 @@ body {
   padding: 5px;
 
 }
+
 .crossed {
   text-decoration: line-through;
 }
+
 .option-item:hover {
   opacity: 1;
 }
+
 .unvisible {
   opacity: 0;
 }
