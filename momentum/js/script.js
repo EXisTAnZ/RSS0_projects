@@ -38,7 +38,10 @@ const body = document.querySelector('body'),
   optionPhotoSource = document.querySelector('.option-photo-source'),
   photoTags = document.querySelector('.photo-tags'),
   blocksForShow = document.querySelectorAll('.block-item'),
-  arrBlocks = ['.weather', '.player', '.time', '.date', '.greeting-container', '.todo-list', '.quotes'];
+  arrBlocks = ['.weather', '.player', '.time', '.date', '.greeting-container', '.todo-list', '.quotes'],
+  todoInput = document.querySelector('.todo-input'),
+  todoTaskList = document.querySelector('.todo-task-list'),
+  todoTitle = document.querySelector('.todo-title')
 
 let language = 'ru',
   blockVisible = 127,
@@ -68,7 +71,7 @@ const translates = {
         day: "numeric"
       }
     },
-    toDo: {
+    todo: {
       title: "Todo List",
       placeholder: "[ Enter tasks ]"
     },
@@ -102,7 +105,7 @@ const translates = {
         month: "long"
       }
     },
-    toDo: {
+    todo: {
       title: "Список дел",
       placeholder: "[ Введите задачи ]"
     },
@@ -209,16 +212,16 @@ function getLocalStorage() {
 window.addEventListener('load', getLocalStorage)
 
 // blocks visible mask saver
-const decToBinArr = (dec) => ('0000000'+Number(dec).toString(2)).slice(-7).split('');
+const decToBinArr = (dec) => ('0000000' + Number(dec).toString(2)).slice(-7).split('');
 const binArrToDec = (arr) => parseInt(arr.join(''), 2);
 let blockVisibleArr = decToBinArr(blockVisible);
 
 const getBlocksVis = () => {
-  arrBlocks.forEach((el,id) => {
-    if (blockVisibleArr[id]==0) document.querySelector(arrBlocks[id]).classList.add('unvisible');
+  arrBlocks.forEach((el, id) => {
+    if (blockVisibleArr[id] == 0) document.querySelector(arrBlocks[id]).classList.add('unvisible');
   })
 }
- getBlocksVis();
+getBlocksVis();
 
 // weather
 async function getWeather(lang) {
@@ -404,6 +407,7 @@ const reshowAll = () => {
   showGreeting();
   showTime();
   showDate();
+  showToDo();
 }
 
 // O P T I O N S
@@ -429,11 +433,11 @@ function showOptions(lang) {
     photoTags.placeholder = translates[lang].options.inputPlaceholder;
   optionsListAddit.innerHTML = "";
   const blocks = translates[lang].options.blocks;
-  blocks.forEach((el,id) => {
+  blocks.forEach((el, id) => {
     let li = document.createElement("li");
     li.classList.add("option-item");
     li.classList.add("block-item");
-    if (blockVisibleArr[id]==0) li.classList.add("crossed");
+    if (blockVisibleArr[id] == 0) li.classList.add("crossed");
     li.innerHTML = el;
     optionsListAddit.appendChild(li);
   })
@@ -442,10 +446,37 @@ function showOptions(lang) {
     elbl.addEventListener('click', () => {
       elbl.classList.toggle('crossed');
       document.querySelector(arrBlocks[id]).classList.toggle('unvisible');
-      if (blockVisibleArr[id]==1) blockVisibleArr[id] = '0'
+      if (blockVisibleArr[id] == 1) blockVisibleArr[id] = '0'
       else blockVisibleArr[id] = '1';
       blockVisible = binArrToDec(blockVisibleArr);
     })
   });
 }
-
+function showToDo(){
+  todoTitle.innerHTML = translates[language].todo.title;
+  todoInput.placeholder = translates[language].todo.placeholder;
+}
+showToDo();
+//TODO List realization
+todoInput.addEventListener("keydown", (function (el) {
+  if ("Enter" === el.key && todoInput.value) {
+    let li = document.createElement("li");
+    li.classList.add("todo-task");
+    let liPar = document.createElement("p");
+    liPar.innerHTML = todoInput.value;
+    liPar.addEventListener('click', () =>{
+      liPar.classList.toggle('crossed');
+      li.classList.toggle('todo-task-checked');
+    })
+    li.append(liPar);
+    todoTaskList.appendChild(li);
+    let liDel = document.createElement("div");
+    liDel.classList.add("todo-task-del");
+    liDel.addEventListener('click',()=>{
+      todoTaskList.removeChild(li);
+    })
+    li.append(liDel);
+    todoInput.value = '';
+    
+  }
+}))

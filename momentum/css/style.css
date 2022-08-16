@@ -410,6 +410,67 @@ body {
   min-height: 20px;
 }
 
+
+
+.todo-list {
+  position: absolute;
+  bottom: 60px;
+  left: 20px;
+  min-width: 220px;
+  max-width: 320px;
+  min-height: 400px;
+  max-height: 400px;
+  overflow: auto;
+  display: flex;
+  z-index: 10;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+  padding: 20px 14px 15px;
+  background-color: rgba(33, 32, 32, 0.5);
+  border-radius: 8px;
+  transition: 0.5s;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #C5B358;
+  border-radius: 20px;
+  border: 1px solid #fff;
+}
+
+.todo-task {
+  display: flex;
+  justify-content: space-between;
+  opacity: .8;
+  min-width: 220px;
+  cursor: pointer;
+  transition: .3s;
+  list-style: none;
+}
+
+.todo-task::before {
+  content: "\2610";
+}
+.todo-task-checked::before {
+  content: "\2611";
+}
+.todo-task-del::after {
+  content: "\2612";
+}
+
+.todo-task:hover {
+  opacity: 1;
+}
+
 @media (max-width: 768px) {
 
   .play-info .song-name {
