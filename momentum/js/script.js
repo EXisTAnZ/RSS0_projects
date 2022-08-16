@@ -36,7 +36,9 @@ const body = document.querySelector('body'),
   optionsTitle = document.querySelector('.options-title'),
   optionLanguage = document.querySelector('.option-language'),
   optionPhotoSource = document.querySelector('.option-photo-source'),
-  photoTags = document.querySelector('.photo-tags')
+  photoTags = document.querySelector('.photo-tags'),
+  blocksForShow = document.querySelectorAll('.block-item'),
+  arrBlocks = ['.weather', '.player', '.time', '.date', '.greeting-container', '.todo-list', '.quotes'];
 
 let language = 'ru',
   blockVisible = 127,
@@ -198,15 +200,25 @@ function getLocalStorage() {
   if (localStorage.getItem('language')) language = (localStorage.getItem('language'))
   else language = 'en';
   if (localStorage.getItem('blockVisible')) blockVisible = localStorage.getItem('blockVisible')
-  else blockVisible.value = 127;
+  else blockVisible = 127;
   if (localStorage.getItem('photoSrcId')) photoSrcId = localStorage.getItem('photoSrcId')
-  else photoSrcId.value = 0;
+  else photoSrcId = 0;
 }
-
-const decToBinArr = (dec) => dec.toString(2).split('');
 
 
 window.addEventListener('load', getLocalStorage)
+
+// blocks visible mask saver
+const decToBinArr = (dec) => ('0000000'+Number(dec).toString(2)).slice(-7).split('');
+const binArrToDec = (arr) => parseInt(arr.join(''), 2);
+let blockVisibleArr = decToBinArr(blockVisible);
+
+const getBlocksVis = () => {
+  arrBlocks.forEach((el,id) => {
+    if (blockVisibleArr[id]==0) document.querySelector(arrBlocks[id]).classList.add('unvisible');
+  })
+}
+ getBlocksVis();
 
 // weather
 async function getWeather(lang) {
@@ -241,7 +253,6 @@ city.onchange = () => {
 
 // qoutes load
 async function getQuotes() {
-  console.log(language);
   const quotes = `quotes${language}.json`;
   const res = await fetch(quotes);
   const data = await res.json();
@@ -399,7 +410,6 @@ const reshowAll = () => {
 showOptions();
 
 //button click
-console.log(optionsButton);
 optionsButton.addEventListener('click', () => {
   optionsBar.classList.toggle('unvisible');
 })
@@ -419,19 +429,23 @@ function showOptions(lang) {
     photoTags.placeholder = translates[lang].options.inputPlaceholder;
   optionsListAddit.innerHTML = "";
   const blocks = translates[lang].options.blocks;
-  blocks.forEach(el => {
+  blocks.forEach((el,id) => {
     let li = document.createElement("li");
     li.classList.add("option-item");
     li.classList.add("block-item");
+    if (blockVisibleArr[id]==0) li.classList.add("crossed");
     li.innerHTML = el;
     optionsListAddit.appendChild(li);
   })
-  const blocksForShow = document.querySelectorAll('.block-item'),
-    arrBlocks = ['.weather', '.player', '.time', '.date', '.greeting-container', '.todo-list', '.quotes'];
+  const blocksForShow = document.querySelectorAll('.block-item');
   blocksForShow.forEach((elbl, id) => {
     elbl.addEventListener('click', () => {
       elbl.classList.toggle('crossed');
       document.querySelector(arrBlocks[id]).classList.toggle('unvisible');
+      if (blockVisibleArr[id]==1) blockVisibleArr[id] = '0'
+      else blockVisibleArr[id] = '1';
+      blockVisible = binArrToDec(blockVisibleArr);
     })
   });
 }
+
