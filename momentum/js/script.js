@@ -47,7 +47,7 @@ const body = document.querySelector('body'),
 let language = 'ru',
   blockVisible = 127,
   photoSrcId = 0,
-  strTags = 'girls';
+  strTags = 'morn+ing';
 getLocalStorage();
 
 const translates = {
@@ -130,7 +130,7 @@ const getTags = () => {
   let word = strTags;
   word = word.replace(/\s/g, '');
   if (!/[^a-z,]/i.test(word)) return word;
-  else return 'nature';
+  else return getTimeOfDay();
 }
 // bg slider add APIs
 async function setBg() {
