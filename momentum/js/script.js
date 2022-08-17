@@ -46,7 +46,8 @@ const body = document.querySelector('body'),
 
 let language = 'ru',
   blockVisible = 127,
-  photoSrcId = 1;
+  photoSrcId = 0,
+  strTags = 'girls';
 getLocalStorage();
 
 const translates = {
@@ -124,6 +125,13 @@ const translates = {
 const getRandomNum = (max) => Math.floor(Math.random() * max) + 1;
 
 let slideNum = getRandomNum(20);
+
+const getTags = () => {
+  let word = strTags;
+  word = word.replace(/\s/g, '');
+  if (!/[^a-z,]/i.test(word)) return word;
+  else return 'nature';
+}
 // bg slider add APIs
 async function setBg() {
   let photoSrcAPI = '';
@@ -133,7 +141,7 @@ async function setBg() {
   const img = new Image();
   img.src = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timeOfDay}/${bgNum.toString().padStart(2, '0')}.jpg`;
   if (photoSrcId != 0) {
-    photoSrcAPI = 1 == photoSrcId ? `https://api.unsplash.com/photos/random?orientation=landscape&query=nature&client_id=cFuhS2HXsaQtTSDM4CQbjX8Sba1b7W-XKMhmcrUl1iQ` : `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=3da2c943f75e330c5079a087024c6829&tags=nature&extras=url_l&format=json&nojsoncallback=1`;
+    photoSrcAPI = 1 == photoSrcId ? `https://api.unsplash.com/photos/random?orientation=landscape&query=${getTags()}&client_id=cFuhS2HXsaQtTSDM4CQbjX8Sba1b7W-XKMhmcrUl1iQ` : `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=3da2c943f75e330c5079a087024c6829&tags=${getTags()}&extras=url_l&format=json&nojsoncallback=1`;
     let res = await fetch(photoSrcAPI);
     const data = await res.json();
     img.src = 1 == photoSrcId ? data.urls.regular : data.photos.photo[getRandomNum(data.photos.photo.length - 1)].url_l;
@@ -436,7 +444,15 @@ optionPhotoSource.addEventListener('click', () => {
   photoSrcId = photoSrcId > 1 ? 0 : Number(photoSrcId) + 1;
   reshowAll();
   setBg();
-})
+});
+// tags read
+photoTags.addEventListener('keydown', (el) => {
+  if ("Enter" === el.key && photoTags.value) {
+    photoTags.value = photoTags.value;
+    strTags = photoTags.value;
+    setBg();
+  }
+});
 //show OPTIONS
 function showOptions(lang) {
   lang = language,
