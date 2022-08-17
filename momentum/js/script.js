@@ -448,7 +448,7 @@ optionPhotoSource.addEventListener('click', () => {
 // tags read
 photoTags.addEventListener('keydown', (el) => {
   if ("Enter" === el.key && photoTags.value) {
-    photoTags.value = photoTags.value;
+    el.preventDefault();
     strTags = photoTags.value;
     setBg();
   }
