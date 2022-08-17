@@ -48,9 +48,8 @@ let language = 'ru',
   blockVisible = 127,
   photoSrcId = 0,
   strTags = 'morn+ing';
-getLocalStorage();
 
-const translates = {
+  const translates = {
   en: {
     weather: {
       city: "Magas",
@@ -120,6 +119,8 @@ const translates = {
     }
   }
 }
+
+getLocalStorage();
 
 // randomizer
 const getRandomNum = (max) => Math.floor(Math.random() * max) + 1;
