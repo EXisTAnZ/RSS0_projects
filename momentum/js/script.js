@@ -39,13 +39,14 @@ const body = document.querySelector('body'),
   photoTags = document.querySelector('.photo-tags'),
   blocksForShow = document.querySelectorAll('.block-item'),
   arrBlocks = ['.weather', '.player', '.time', '.date', '.greeting-container', '.todo-list', '.quotes'],
+  arrPhotoSrc = ['GitHub', 'Unsplash', 'Flickr'],
   todoInput = document.querySelector('.todo-input'),
   todoTaskList = document.querySelector('.todo-task-list'),
   todoTitle = document.querySelector('.todo-title')
 
 let language = 'ru',
   blockVisible = 127,
-  photoSrcId = 0;
+  photoSrcId = 1;
 getLocalStorage();
 
 const translates = {
@@ -123,13 +124,20 @@ const translates = {
 const getRandomNum = (max) => Math.floor(Math.random() * max) + 1;
 
 let slideNum = getRandomNum(20);
-// bg slider
-const setBg = () => {
+// bg slider add APIs
+async function setBg() {
+  let photoSrcAPI = '';
   const timeOfDay = getTimeOfDay();
+  const selImgAPI = arrPhotoSrc[photoSrcId];
   const bgNum = slideNum;
-
   const img = new Image();
   img.src = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timeOfDay}/${bgNum.toString().padStart(2, '0')}.jpg`;
+  if (photoSrcId != 0) {
+    photoSrcAPI = 1 == photoSrcId ? `https://api.unsplash.com/photos/random?orientation=landscape&query=nature&client_id=cFuhS2HXsaQtTSDM4CQbjX8Sba1b7W-XKMhmcrUl1iQ` : `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=3da2c943f75e330c5079a087024c6829&tags=nature&extras=url_l&format=json&nojsoncallback=1`;
+    let res = await fetch(photoSrcAPI);
+    const data = await res.json();
+    img.src = 1 == photoSrcId ? data.urls.regular : data.photos.photo[getRandomNum(data.photos.photo.length - 1)].url_l;
+  }
   img.onload = () => {
     body.style.backgroundImage = `url(${img.src})`;
   };
@@ -207,7 +215,6 @@ function getLocalStorage() {
   if (localStorage.getItem('photoSrcId')) photoSrcId = localStorage.getItem('photoSrcId')
   else photoSrcId = 0;
 }
-
 
 window.addEventListener('load', getLocalStorage)
 
@@ -423,13 +430,19 @@ optionLanguage.addEventListener('click', () => {
   if (language == 'ru') language = 'en'
   else language = 'ru';
   reshowAll();
+});
+//photo source select
+optionPhotoSource.addEventListener('click', () => {
+  photoSrcId = photoSrcId > 1 ? 0 : Number(photoSrcId) + 1;
+  reshowAll();
+  setBg();
 })
 //show OPTIONS
 function showOptions(lang) {
   lang = language,
     optionsTitle.innerHTML = translates[lang].options.title,
     optionLanguage.innerHTML = translates[lang].options.language + ' (' + language + ')',
-    optionPhotoSource.innerHTML = translates[lang].options.photoSource + '    (' + 'GitHub' + ')',
+    optionPhotoSource.innerHTML = translates[lang].options.photoSource + ' (' + arrPhotoSrc[photoSrcId] + ')',
     photoTags.placeholder = translates[lang].options.inputPlaceholder;
   optionsListAddit.innerHTML = "";
   const blocks = translates[lang].options.blocks;
@@ -452,7 +465,7 @@ function showOptions(lang) {
     })
   });
 }
-function showToDo(){
+function showToDo() {
   todoTitle.innerHTML = translates[language].todo.title;
   todoInput.placeholder = translates[language].todo.placeholder;
 }
@@ -463,8 +476,9 @@ todoInput.addEventListener("keydown", (function (el) {
     let li = document.createElement("li");
     li.classList.add("todo-task");
     let liPar = document.createElement("p");
+    liPar.classList.add('todo-task-p');
     liPar.innerHTML = todoInput.value;
-    liPar.addEventListener('click', () =>{
+    liPar.addEventListener('click', () => {
       liPar.classList.toggle('crossed');
       li.classList.toggle('todo-task-checked');
     })
@@ -472,11 +486,11 @@ todoInput.addEventListener("keydown", (function (el) {
     todoTaskList.appendChild(li);
     let liDel = document.createElement("div");
     liDel.classList.add("todo-task-del");
-    liDel.addEventListener('click',()=>{
+    liDel.addEventListener('click', () => {
       todoTaskList.removeChild(li);
     })
     li.append(liDel);
     todoInput.value = '';
-    
+
   }
 }))
