@@ -47,7 +47,7 @@ const body = document.querySelector('body'),
 let language = 'ru',
   blockVisible = 127,
   photoSrcId = 0,
-  strTags = 'morn+ing';
+  strTags = 'm+ing';
 
   const translates = {
   en: {
