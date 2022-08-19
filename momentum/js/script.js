@@ -47,7 +47,7 @@ const body = document.querySelector('body'),
 let language = 'ru',
   blockVisible = 127,
   photoSrcId = 0,
-  strTags = 'mo1+ing';
+  strTags = '+';
 
   const translates = {
   en: {
@@ -463,6 +463,7 @@ function showOptions(lang) {
     optionLanguage.innerHTML = translates[lang].options.language + ' (' + language + ')',
     optionPhotoSource.innerHTML = translates[lang].options.photoSource + ' (' + arrPhotoSrc[photoSrcId] + ')',
     photoTags.placeholder = translates[lang].options.inputPlaceholder;
+    photoTags.value = strTags != '+' ? strTags : '';
   optionsListAddit.innerHTML = "";
   const blocks = translates[lang].options.blocks;
   blocks.forEach((el, id) => {
