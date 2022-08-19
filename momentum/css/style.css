@@ -419,8 +419,8 @@ body {
   left: 20px;
   min-width: 220px;
   max-width: 320px;
-  min-height: 400px;
-  max-height: 400px;
+  min-height: 340px;
+  max-height: 380px;
   overflow: auto;
   display: flex;
   z-index: 10;
