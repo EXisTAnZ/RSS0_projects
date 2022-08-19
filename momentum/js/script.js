@@ -49,7 +49,7 @@ let language = 'ru',
   photoSrcId = 0,
   strTags = '+';
 
-  const translates = {
+const translates = {
   en: {
     weather: {
       city: "Magas",
@@ -315,16 +315,19 @@ const playSong = document.querySelectorAll('.play-song'),
 let isPlay = false,
   playNum = 0;
 
-const playAudio = () => {
+const setCurrAudio = () => {
+  audio.src = playList[playNum].src;
+  playSong.forEach((element) => {
+    element.classList.remove('item-active');
+  });
+  playSong[playNum].classList.add('item-active');
+}
+setCurrAudio();
+
+const playPauseAudio = () => {
   if (!isPlay) {
-    audio.src = playList[playNum].src;
-    audio.currentTime = 0;
     isPlay = true;
     playButton.classList.add('pause');
-    playSong.forEach((element) => {
-      element.classList.remove('item-active');
-    });
-    playSong[playNum].classList.add('item-active');
     audio.play();
   } else {
     isPlay = false;
@@ -332,13 +335,17 @@ const playAudio = () => {
     audio.pause();
   }
 };
-playButton.addEventListener('click', playAudio);
+playButton.addEventListener('click', playPauseAudio);
 
 playSong.forEach((el, id) => {
   el.addEventListener('click', () => {
-    playNum = id;
-    isPlay = false;
-    playAudio();
+    if (playNum == id) playPauseAudio()
+    else {
+      playNum = id;
+      isPlay = false;
+      setCurrAudio();
+      playPauseAudio();
+    }
   });
 });
 
@@ -346,7 +353,8 @@ const playNext = () => {
   playNum += 1;
   if (playNum > playList.length - 1) playNum = 0;
   isPlay = false;
-  playAudio();
+  setCurrAudio();
+  playPauseAudio();
 };
 
 playNextButton.addEventListener('click', playNext);
@@ -355,7 +363,8 @@ const playPrev = () => {
   playNum -= 1;
   if (playNum < 0) playNum = playList.length - 1;
   isPlay = false;
-  playAudio();
+  setCurrAudio();
+  playPauseAudio();
 };
 
 playPrevButton.addEventListener('click', playPrev);
@@ -463,7 +472,7 @@ function showOptions(lang) {
     optionLanguage.innerHTML = translates[lang].options.language + ' (' + language + ')',
     optionPhotoSource.innerHTML = translates[lang].options.photoSource + ' (' + arrPhotoSrc[photoSrcId] + ')',
     photoTags.placeholder = translates[lang].options.inputPlaceholder;
-    photoTags.value = strTags != '+' ? strTags : '';
+  photoTags.value = strTags != '+' ? strTags : '';
   optionsListAddit.innerHTML = "";
   const blocks = translates[lang].options.blocks;
   blocks.forEach((el, id) => {
