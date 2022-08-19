@@ -47,7 +47,7 @@ const body = document.querySelector('body'),
 let language = 'ru',
   blockVisible = 127,
   photoSrcId = 0,
-  strTags = 'm+ing';
+  strTags = 'mo1+ing';
 
   const translates = {
   en: {
@@ -210,6 +210,7 @@ function setLocalStorage() {
   localStorage.setItem('language', language);
   localStorage.setItem('blockVisible', blockVisible);
   localStorage.setItem('photoSrcId', photoSrcId);
+  localStorage.setItem('strTags', strTags);
 }
 window.addEventListener('beforeunload', setLocalStorage)
 
@@ -223,6 +224,7 @@ function getLocalStorage() {
   else blockVisible = 127;
   if (localStorage.getItem('photoSrcId')) photoSrcId = localStorage.getItem('photoSrcId')
   else photoSrcId = 0;
+  if (localStorage.getItem('strTags')) strTags = localStorage.getItem('strTags');
 }
 
 window.addEventListener('load', getLocalStorage)
