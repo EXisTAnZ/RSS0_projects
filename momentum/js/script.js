@@ -142,10 +142,10 @@ async function setBg() {
   const img = new Image();
   img.src = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timeOfDay}/${bgNum.toString().padStart(2, '0')}.jpg`;
   if (photoSrcId != 0) {
-    photoSrcAPI = 1 == photoSrcId ? `https://api.unsplash.com/photos/random?orientation=landscape&query=${getTags()}&client_id=cFuhS2HXsaQtTSDM4CQbjX8Sba1b7W-XKMhmcrUl1iQ` : `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=3da2c943f75e330c5079a087024c6829&tags=${getTags()}&extras=url_l&format=json&nojsoncallback=1`;
+    photoSrcAPI = 1 == photoSrcId ? `https://api.unsplash.com/photos/random?orientation=landscape&query=${getTags()}&client_id=cFuhS2HXsaQtTSDM4CQbjX8Sba1b7W-XKMhmcrUl1iQ` : `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=3da2c943f75e330c5079a087024c6829&tags=${getTags()}&extras=url_h&format=json&nojsoncallback=1`;
     let res = await fetch(photoSrcAPI);
     const data = await res.json();
-    img.src = 1 == photoSrcId ? data.urls.regular : data.photos.photo[getRandomNum(data.photos.photo.length - 1)].url_l;
+    img.src = 1 == photoSrcId ? data.urls.regular : data.photos.photo[getRandomNum(data.photos.photo.length - 1)].url_h;
   }
   img.onload = () => {
     body.style.backgroundImage = `url(${img.src})`;
